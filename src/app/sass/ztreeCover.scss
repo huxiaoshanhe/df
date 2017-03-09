@@ -1,0 +1,56 @@
+@import "global";
+@import "input";
+
+@include exports("ztree") {
+
+  .ztree li span {
+    color: #333;
+  }
+
+  .ztree li a:hover {
+    text-decoration: none;
+  }
+
+  .ztree li a.curSelectedNode {
+    padding-top: 1px;
+    border: 0;
+    color: $black;
+    background-color: transparent;
+    opacity: 1;
+  }
+
+  .ztree li span.button.chk.checkbox_true_full, 
+  .ztree li span.button.chk.checkbox_true_full_focus, 
+  .ztree li span.button.chk.checkbox_false_full, 
+  .ztree li span.button.chk.checkbox_false_full_focus, 
+  .ztree li span.button.chk.checkbox_true_part, 
+  .ztree li span.button.chk.checkbox_true_part_focus, 
+  .ztree li span.button.chk.checkbox_false_part, 
+  .ztree li span.button.chk.checkbox_false_part_focus, 
+  .ztree li span.button.chk.checkbox_false_disable {
+
+    background-image: none;
+
+    display: inline-block;
+    width: $checkbox-box-width;
+    height: $checkbox-box-height;
+    margin: 0 $checkbox-text-spacing -1px 0;
+    border: 1px solid $black;
+    cursor: default;
+
+    border-color: #CFDBE4;
+    background-color: #fff
+  }
+
+  .ztree li span.button.chk.checkbox_true_full,
+  .ztree li span.button.chk.checkbox_true_full_focus,
+  .ztree li span.button.chk.checkbox_true_part,
+  .ztree li span.button.chk.checkbox_true_part_focus {
+
+    color: $checkbox-selected-font-color;
+    background-color: $checkbox-box-selected-color;
+    border-color: #9AA6AD;
+    box-shadow: inset 1px 1px 0 1px #fff,
+                inset -1px -1px 0 1px #fff;
+  }
+}

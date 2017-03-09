@@ -1,0 +1,100 @@
+@import "global";
+
+@include exports ("inline-style") {
+
+  // 线字线:)
+  .line-font-line {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+
+    &::after, &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      height: 1px;
+      width: 30%;
+    }
+    &::before { left: auto; right: 0; }
+  }
+
+  .font-line {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      display: inline-block;
+      width: 100%;
+      margin-left: 10px;
+      border-top: 1px solid #ebdee0;
+    }
+    &.dashed:after { border-top-style: dashed; }
+  }
+
+  .fn-fonthid {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .proposal-input {
+    height: 22px;
+    padding-left: 5px;
+    line-height: 20px;
+    background-color: #F8F8F8;
+    border: 0;
+    outline: 0;
+  }
+
+  .proposal-area {
+    padding: 5px 5px 0 5px;
+    margin-top: 1px;
+    position: relative;
+    z-index: 1;
+    background-color: #F8F8F8;
+  }
+
+}
+
+// $note-font-size: rem-calc(12);
+// $font-line-color: #ebdee0;
+// $note-font-color: #87898b;
+// $prompt-font-color: #ff5c54;
+
+// @include exports ("inline-style") {
+
+
+
+//   // 线字:)
+
+
+//   .fn-fonthid {
+//     display: inline-block;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//     white-space: nowrap;
+//   }
+
+//   .note-font { // 注释内容
+//     display: inline-block;
+//     margin-left: -5px; // 抵消中文字符空白
+//     font-size: $note-font-size;
+//     color: $note-font-color;
+//     &::before { content: "【注】"; }
+//   }
+//   .prompt-font { // 提示内容
+//     display: inline-block;
+//     margin-left: -5px; // 抵消中文字符空白
+//     font-size: $note-font-size;
+//     color: $prompt-font-color;
+//     &::before { content: "【提示】"; }
+//   }
+// }

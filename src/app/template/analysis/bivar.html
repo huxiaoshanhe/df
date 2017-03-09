@@ -1,0 +1,47 @@
+<div class="analysis-dialog">
+	<div class="dialog-inner">
+		<div class="dialog-header">
+		双变量相关分析
+		  <span class="icon-bar">
+		    <i class="icon remove" ng-click="close()"></i>
+		  </span>
+		</div>
+
+		<div class="dialog-content returnback bivar" style="padding-bottom:0;">
+		  <table style="width: 100%;">
+			  <tbody>
+			      <tr class="attention">
+			        <th class="tableLeft">选变量：</th>
+			        <td>
+			          <div class="zbl">
+			          	 <label class="checkbox" ng-repeat="indept in data.variables" ng-class="{'on': selectRecord.indept.indexOf(indept.index)!==-1 }" ng-click="selectIndept(indept.index)">{{indept.name}}</label>
+			          </div>
+			        </td>
+			      </tr>
+			      <tr>
+			      	<td colspan="2">
+			      		<div class="sel-params">
+			      			<span>选择系数</span>
+			      			<label class="checkbox" ng-class="{'on':selectRecord.correlations.indexOf('pearson')!==-1}" ng-click="selectCorrelations('pearson')">Pearson</label>
+			      			<label class="checkbox" ng-class="{'on':selectRecord.correlations.indexOf('kendall')!==-1}" ng-click="selectCorrelations('kendall')">Kendall's tau-b</label>
+			      			<label class="checkbox" ng-class="{'on':selectRecord.correlations.indexOf('spearman')!==-1}" ng-click="selectCorrelations('spearman')">Spearman</label>
+			      		</div>
+			      		
+			      		<p>显著性检验：
+			      			<span class="radio" ng-class="{'on':selectRecord.sign==2}" ng-click="selectRecord.sign=2">双侧</span>
+					      	<span class="radio" ng-class="{'on':selectRecord.sign==1}" ng-click="selectRecord.sign=1">单侧</span>
+			      		</p>
+			      	</td>
+			      </tr>
+			    </tbody>
+		    </table>
+		</div>
+
+		<div class="dialog-bottom">
+		  <button class="tiny cancel" ng-click="close();">取消</button>
+		  <button class="small confirm"
+		    ng-class="{'disabled':startButton() == 0}"
+		    ng-click="bivarGo()">确定</button>
+		</div>
+	</div>
+</div>

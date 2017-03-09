@@ -1,0 +1,87 @@
+<div class="dialog-header">
+我的收藏夹
+  <span class="icon-bar">
+    <i class="icon remove"></i>
+  </span>
+</div>
+
+<div class="dialog-content mycollection" style="padding-bottom:0;">
+  <div class="mycollect" style="display:block;margin:0;left:0;">
+		<div class="m-tool">
+			<ul>
+				<li class="new-file-btn" ng-click="mcc.shownewFiles()">新建文件夹</li>
+				<li class="download-btn" ng-click="mcc.indicateDownload()">下载</li>
+				<li class="del-btn" ng-click="mcc.indicateDelete()">删除</li>
+				<li class="edit-btn" ng-click="mcc.renameFiles()">重命名</li>
+				<li class="copy-btn" ng-click="mcc.indicateCopy()"><i></i>复制</li>
+				<li class="move-btn" ng-click="mcc.moveFile()"><i></i>移动</li>
+				<li class="paste-btn no" ng-class="{'normal':mcc.copyid!=null}" ng-click="mcc.paste()"><i></i>粘贴</li>
+				<!-- <li class="more-btn"><span>更多</span>
+					<ul>
+						<li ng-click="mcc.indicateCopy()">复制</li>
+						<li ng-click="mcc.moveFile()">移动</li>
+						<li class="no" ng-class="{'normal':mcc.copyid!=null}" ng-click="mcc.paste()">粘贴</li>
+					</ul>
+				</li> -->
+			</ul>			
+		</div>
+		<div class="m-l-s">
+			<span class="list-style-btn" ng-class="{'on':mcc.isTable!==true}" ng-click="mcc.isTable=false"></span>
+			<span class="tab-style-btn" ng-class="{'on':mcc.isTable===true}" ng-click="mcc.isTable=true"></span>
+			<span class="now-position">我的收藏夹<em ng-repeat="p in mcc.parents"><i></i><a href="javascript:;" ng-click="mcc.getFileChild(p.collectionCode,p.collectionName,true)">{{p.collectionName}}</a></em></span>
+			<input type="text" ng-model="mcc.file_keywords" placeholder="搜索我的数据文件" >
+			<a href="" class="btn" ng-click="mcc.sear_files()"></a>
+		</div>
+		<div class="m-main">
+			<div class="m-main-l collection">
+				<dl>
+					<dt ng-click="mcc.allFiles()">全部文件</dt>
+					<dd ng-repeat="item in mcc.myds" ng-click="mcc.getFile(item.collectionCode,item.collectionName)" ng-class="{'on':mcc.selectFile.code2==item.collectionCode}" title="{{item.collectionName}}">{{item.collectionName}}</dd>
+					<dd class="hide"><input type="text" ng-model="mcc.lname" id="collection_left_new" value="新建文件夹" ng-blur="mcc.newFiles()" /></dd>
+				</dl>
+			</div>
+			<div class="m-main-r collection">
+				<table cellpadding="0" cellspacing="0" ng-show="!mcc.isTable==true">
+					<thead>
+						<tr>
+							<td class="file-operate"><label class="checkbox-c" ng-click="mcc.selectAllFiles()" ng-class="{'on':mcc.selectFile.codes===mcc.selectFile.allcodes}"><em></em></span></td>
+							<td class="file-name">文件名</td>
+							<td class="modify-time">修改时间</td>
+							<td class="other"></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="file in mcc.list" ng-class="{'on':mcc.selectFile.code==file.collectionCode}">
+							<td class="file-operate"><label class="checkbox-c" ng-click="mcc.multiSelect(file.collectionCode,file.collectionName,file.directory)" ng-class="{'on':mcc.selectFile.codes.indexOf(file.collectionCode)!=-1}"><em></em></label></td>
+							<td class="file-name" ng-class="{'directory':file.directory==true}"  ng-click="mcc.selectIndicate(file.collectionCode,file.collectionName,file.directory)" ng-dblclick="mcc.getFileChild(file.collectionCode,file.collectionName,file.directory)"><span collectionCode="{{file.collectionCode}}" parentid="{{file.parentID}}" title="{{file.collectionName}}">{{file.collectionName}}</span></td>
+							<td>{{file.lastModify}}</td>
+							<td></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td></td>
+							<td class="directory"><input type="text" ng-model="mcc.rname" id="collection_right_new" value="新建文件夹" ng-blur="mcc.newFiles()" /></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tfoot>
+				</table>
+				
+				<div class="juzhen" ng-show="mcc.isTable===true">
+					<dl ng-repeat="jz in mcc.list" ng-click="mcc.selectIndicate(jz.collectionCode,jz.collectionName,jz.directory)" ng-class="{'on':mcc.selectFile.code==jz.collectionCode}" ng-dblclick="mcc.getFileChild(jz.collectionCode,jz.collectionName,jz.directory)" title="{{jz.collectionName}}">
+						<dt ng-class="{'file':jz.directory==true}"></dt>
+						<dd>{{jz.collectionName}}</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="dialog-bottom" style="position: relative;bottom: 0;">
+  <button class="tiny cancel" ng-click="closeThisDialog();">取消</button>
+  <button class="small confirm"
+    ng-class="{'disabled':mcc.selectFile.code==0}"
+    ng-click="mcc.openSheet()">确定</button>
+</div>

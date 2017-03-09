@@ -1,0 +1,31 @@
+<div>
+	<div class="title-main">修改密码</div>
+	<div class="updatePass">
+		<form class="form-horizontal">
+		  <div class="form-group">
+		    <label for="oldpassword" class="col-sm-3 control-label">旧密码：</label>
+		    <div class="col-sm-9">
+		      <input type="password" class="form-control" id="oldpassword" placeholder="请输入旧密码" ng-model="upc.oldPassword" ng-change="upc.isNull()">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="newpassword" class="col-sm-3 control-label">新密码：</label>
+		    <div class="col-sm-9">
+		      <input type="password" class="form-control" id="newpassword" placeholder="请输入新密码" ng-model="upc.newPassword" ng-change="upc.isNull()">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="repassword" class="col-sm-3 control-label">确认密码：</label>
+		    <div class="col-sm-9">
+		      <input type="password" class="form-control" id="repassword" placeholder="请再次输入新密码" ng-model="upc.rePassword" ng-change="upc.isNull()">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-3 col-sm-9">
+		      <button type="submit" class="btn btn-info" ng-disabled="upc.isDisabled" ng-click="upc.goSubmit()">确认</button>
+		    </div>
+		  </div>
+		</form>
+		<div class="tipsShow" ng-style="upc.tipsShowStyle">{{upc.tipsMessage}}</div>
+	</div>
+</div>

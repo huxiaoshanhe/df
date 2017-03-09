@@ -1,0 +1,39 @@
+﻿
+<div class="result" style="margin: 0 auto;">
+    <div class="directory"></div>
+    <div class="result-title">
+        <h1>因子分析结果</h1>
+    <span class="header-tools">
+      <i class="icon icon-r icon-r-download"></i>
+      <i class="icon icon-r icon-r-share" title="分享"
+         ng-if="flc.isShare"
+         ng-click="flc.share(flc.shareId)"></i>
+    </span>
+    </div>
+    <div ng-repeat="paragraph in flc.textResult[0]">
+        <a ng-if="paragraph.name" id="t{{$index}}" href="#" class="mamam" data-text="{{paragraph.name}}"></a>
+        <font class="part-title" ng-bind="paragraph.name"></font>
+        <div class="part">
+            <div class="part-font"
+                 ng-repeat="key in paragraph.keys"
+                 ng-bind-html="flc.trustAsHtml(paragraph[key])"></div>
+        </div>
+    </div>
+    <div ng-if="flc.lineChart">
+        <a id="c1" href="#" class="mamam" data-text="碎石图"></a>
+        <font class="part-title">碎石图</font>
+        <div class="part">
+            <chart chart-data="flc.lineChart"></chart>
+        </div>
+    </div>
+    <div ng-repeat="paragraph in flc.textResult[1]">
+        <a ng-if="paragraph.name" id="t1{{$index}}" href="#" class="mamam" data-text="{{paragraph.name}}"></a>
+        <font class="part-title" ng-bind="paragraph.name"></font>
+        <div class="part">
+            <div class="part-font"
+                 ng-repeat="key in paragraph.keys"
+                 ng-bind-html="flc.trustAsHtml(paragraph[key])"></div>
+        </div>
+    </div>
+</div>
+

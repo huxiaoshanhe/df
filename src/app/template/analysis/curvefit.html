@@ -1,0 +1,71 @@
+<div class="analysis-dialog">
+	<div class="dialog-inner">
+		<div class="dialog-header">
+		 曲线估计
+		  <span class="icon-bar">
+		    <i class="icon remove" ng-click="close()"></i>
+		  </span>
+		</div>
+
+		<div class="dialog-content curve" style="padding-bottom:0;">
+		  <table style="width: 100%;">
+			  <tbody>
+			      <tr>
+			        <th class="tableLeft">因变量：</th>
+			        <td>
+			          <div class="ybl">
+			          	<div class="nowYbl" ng-click="showList('.ybl',event)">{{selectRecord.deptname}}<em class="ico-down"></em></div>
+			          	<ul>
+			          		<li ng-repeat="dept in data.deptVars" ng-click="selectDept(dept.index,dept.name)">{{dept.name}}</li>
+			          	</ul>
+			          </div>
+			        </td>
+			      </tr>
+			      
+			      <tr>
+			        <th class="tableLeft">自变量：</th>
+			        <td>
+			          <div class="zbl">
+			          	<div class="nowYbl" ng-click="showList('.zbl',event)">{{selectRecord.indeptname}}<em class="ico-down"></em></div>
+			          	<ul>
+			          		<li ng-repeat="indept in data.indeptVars" ng-click="selectIndept(indept.index,indept.name)">{{indept.name}}</li>
+			          	</ul>
+			          </div>
+			        </td>
+			      </tr>
+			      
+			     <tr>
+			     	<th class="tableLeft">选择模型</th>
+			     	<td>
+			     		<div class="methods">
+			     			<label class="checkbox" ng-repeat="method in data.methods" ng-class="{'on': selectRecord.models.indexOf(method.methodId)!==-1 }" ng-click="selectMethod(method.methodId)">{{method.methodName}}</label>
+			     		</div>
+			     	</td>
+			     </tr>
+			     
+			     <tr>
+			     	<td colspan="2">
+			     		<div class="fmcl">
+			     			<label class="checkbox" ng-class="{'on':selectRecord.savingitems!==''}" ng-click="selectSaving()">预测区间置信水平</label>
+			     			<input type="text" ng-model="selectRecord.fmclx" readonly="readonly" placeholder="90%" ng-click="showList('.fmcl')" />
+				          	<ul>
+				          		<li value="0.9" ng-click="selectFmcl(0.9,'90%')">90%</li>
+				          		<li value="0.95" ng-click="selectFmcl(0.95,'95%')">95%</li>
+				          		<li value="0.99" ng-click="selectFmcl(0.99,'99%')">99%</li>
+				          	</ul>
+			     		</div>
+			     	</td>
+			     </tr>
+			      
+			    </tbody>
+		    </table>
+		</div>
+
+		<div class="dialog-bottom">
+		  <button class="tiny cancel" ng-click="close();">取消</button>
+		  <button class="small confirm"
+		    ng-class="{'disabled':startButton() == 0}"
+		    ng-click="curvefitGo()">确定</button>
+		</div>
+	</div>
+</div>

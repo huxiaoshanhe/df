@@ -1,0 +1,32 @@
+﻿
+<div class="result" style="margin: 0 auto;">
+    <div class="directory"></div>
+    <div class="result-title">
+        <h1>HP滤波分析结果</h1>
+    <span class="header-tools">
+      <i class="icon icon-r icon-r-download"></i>
+      <i class="icon icon-r icon-r-share" title="分享"
+         ng-if="hfrc.isShare"
+         ng-click="hfrc.share(hfrc.shareId)"></i>
+    </span>
+    </div>
+    <div ng-repeat="paragraph in hfrc.textResult">
+        <a ng-if="paragraph.name" id="t{{$index}}" href="#" class="mamam" data-text="{{paragraph.name}}"></a>
+        <font class="part-title" ng-bind="paragraph.name"></font>
+        <div class="part">
+            <div class="part-font"
+                 ng-repeat="key in paragraph.keys"
+                 ng-bind-html="hfrc.trustAsHtml(paragraph[key])"></div>
+        </div>
+    </div>
+    <div ng-if="hfrc.lineChart">
+        <a id="c1" href="#" class="mamam" data-text="H-P滤波"></a>
+        <font class="part-title">H-P滤波</font>
+        <font ng-if="hfrc.lumda">（Lambda={{hfrc.lumda}})</font>
+        <div class="part">
+            <chart chart-data="hfrc.lineChart"></chart>
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,9 @@
+<div id="rmenu" class="rmenu" style="top: 50px;left: 50px;display: block;">
+  <ul>
+    <li ng-repeat="item in data track by $index"
+        ng-class="{'group-line': item == '-', 'disabled': item.disabled}"
+        ng-click="click(item.key)">
+      {{item.text}}
+    </li>
+  </ul>
+</div>

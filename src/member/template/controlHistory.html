@@ -1,0 +1,19 @@
+<div>
+	<div class="title-main">最近操作历史</div>
+	<div class="data-list keywords">
+		<table>
+			<tr>
+				<th class="th1"><span class="checkbox"><em></em></span></th>
+				<th class="th2">名称</th>
+				<th class="th3 text-center" style="width:200px">创建日期</th>
+				<th class="th5 text-center">操作</th>
+			</tr>			
+			<tr ng-repeat="c in chc.latest">
+				<td><span class="checkbox"><em></em></span></td>
+				<td><span class="title" ng-click="chc.open($index)"><em title="{{c.name}}" ng-bind="c.name"></em></span></td>
+				<td class="text-center" ng-bind="c.time"></td>
+				<td class="text-center control"><span class="fa fa-trash" ng-click="chc.delete($index)"></span></td>
+			</tr>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,47 @@
+﻿
+<div class="result" style="margin: 0 auto;">
+    <div class="directory"></div>
+    <div class="result-title">
+        <h1>自相关分析结果</h1>
+    <span class="header-tools">
+      <i class="icon icon-r icon-r-download"></i>
+      <i class="icon icon-r icon-r-share" title="分享"
+         ng-if="atc.isShare"
+         ng-click="atc.share(atc.shareId)"></i>
+    </span>
+    </div>
+    <div ng-repeat="paragraph in atc.textResult[0]">
+        <a ng-if="paragraph.name" id="t{{$index}}" href="#" class="mamam" data-text="{{paragraph.name}}"></a>
+        <font class="part-title" ng-bind="paragraph.name"></font>
+        <div class="part">
+            <div class="part-font"
+                 ng-repeat="key in paragraph.keys"
+                 ng-bind-html="atc.trustAsHtml(paragraph[key])"></div>
+        </div>
+    </div>
+    <div ng-if="atc.acMixChart">
+        <a id="c1" href="#" class="mamam" data-text="自相关图形"></a>
+        <font class="part-title">自相关图形</font>
+        <div class="part">
+            <chart chart-data="atc.acMixChart"></chart>
+        </div>
+    </div>
+    <div ng-repeat="paragraph in atc.textResult[1]">
+        <a ng-if="paragraph.name" id="t{{$index}}" href="#" class="mamam" data-text="{{paragraph.name}}"></a>
+        <font class="part-title" ng-bind="paragraph.name"></font>
+        <div class="part">
+            <div class="part-font"
+                 ng-repeat="key in paragraph.keys"
+                 ng-bind-html="atc.trustAsHtml(paragraph[key])"></div>
+        </div>
+    </div>
+    <div ng-if="atc.pacMixChart">
+        <a id="c2" href="#" class="mamam" data-text="自相关图形"></a>
+        <font class="part-title">偏自相关图形</font>
+        <div class="part">
+            <chart chart-data="atc.pacMixChart"></chart>
+        </div>
+    </div>
+</div>
+
+

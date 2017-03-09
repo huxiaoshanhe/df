@@ -1,0 +1,57 @@
+<div class="analysis-dialog">
+	<div class="dialog-inner">
+		<div class="dialog-header">
+		主成分分析
+		  <span class="icon-bar">
+		    <i class="icon remove" ng-click="close()"></i>
+		  </span>
+		</div>
+
+		<div class="dialog-content returnback pcanalysis" style="padding-bottom:0;">
+		  <table style="width: 100%;">
+			  <tbody>
+			      <tr>
+			        <th class="tableLeft">选变量：</th>
+			        <td>
+			          <div class="zbl">
+			          	 <label class="checkbox" ng-repeat="indept in data.variables" ng-class="{'on': selectRecord.varIndexs.indexOf(indept.index)!==-1 }" ng-click="selectIndept(indept.index)">{{indept.name}}</label>
+			          </div>
+			        </td>
+			      </tr>
+			      <tr>
+			      	<td colspan="2">
+			      		<div class="sel-params">
+			      			<input type="text" ng-model="selectRecord.pcNum" placeholder="请输入主成分数目" />
+			      		</div>
+			      		
+			      		<p>分析：
+			      			<span class="radio" ng-class="{'on':selectRecord.analysis=='RELATIVE_MATRIX'}" ng-click="selectRecord.analysis='RELATIVE_MATRIX'">相关矩阵</span>
+					      	<span class="radio" ng-class="{'on':selectRecord.analysis=='COVARIANCE_MATRIX'}" ng-click="selectRecord.analysis='COVARIANCE_MATRIX'">协方差矩阵</span>
+			      		</p>
+			      		
+			      		<div class="xuanzhuan">旋转
+				      		<input type="text" ng-model="selectRecord.pcaRotatesName" readonly="readonly" ng-click="showList('.xuanzhuan')" />
+				      		<ul>
+				      			<li ng-repeat="li in data.pcaRotates" ng-click="selectRotates(li.methodId,li.methodName)">{{li.methodName}}</li>
+				      		</ul>
+			      		</div>
+			      		<div class="scores">得分
+				      		<input type="text" ng-model="selectRecord.pcaScoresName" readonly="readonly" ng-click="showList('.scores')" />
+				      		<ul>
+				      			<li ng-repeat="li in data.pcaScores" ng-click="selectScores(li.methodId,li.methodName)">{{li.methodName}}</li>
+				      		</ul>
+			      		</div>
+			      	</td>
+			      </tr>
+			    </tbody>
+		    </table>
+		</div>
+
+		<div class="dialog-bottom">
+		  <button class="tiny cancel" ng-click="close();">取消</button>
+		  <button class="small confirm"
+		    ng-class="{'disabled':startButton() == 0}"
+		    ng-click="pcanalysisGo()">确定</button>
+		</div>
+	</div>
+</div>

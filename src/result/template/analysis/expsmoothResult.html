@@ -1,0 +1,30 @@
+﻿
+<div class="result" style="margin: 0 auto;">
+    <div class="directory"></div>
+    <div class="result-title">
+        <h1>指数平滑</h1>
+    <span class="header-tools">
+      <i class="icon icon-r icon-r-download"></i>
+      <i class="icon icon-r icon-r-share" title="分享"
+         ng-if="epc.isShare"
+         ng-click="epc.share(epc.shareId)"></i>
+    </span>
+    </div>
+    <div ng-repeat="paragraph in epc.textResult">
+        <a ng-if="paragraph.name" id="t{{$index}}" href="#" class="mamam" data-text="{{paragraph.name}}"></a>
+        <font class="part-title" ng-bind="paragraph.name"></font>
+        <div class="part">
+            <div class="part-font"
+                 ng-repeat="key in paragraph.keys"
+                 ng-bind-html="epc.trustAsHtml(paragraph[key])"></div>
+        </div>
+    </div>
+    <div ng-if="epc.lineChart">
+        <a id="c1" href="#" class="mamam" data-text="图形"></a>
+        <font class="part-title">图形</font>
+        <div class="part">
+            <chart chart-data="epc.lineChart"></chart>
+        </div>
+    </div>
+</div>
+

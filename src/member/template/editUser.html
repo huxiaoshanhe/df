@@ -1,0 +1,55 @@
+<div>
+	<div class="title-main">编辑用户</div>
+	<div class="updatePass">
+		<form class="form-horizontal">
+		  <div class="form-group">
+		    <label for="username" class="col-sm-3 control-label"><span style="color:red;">*</span><span style="letter-spacing: 5px;">用户名</span>：</label>
+		    <div class="col-sm-9">
+		      <input type="text" class="form-control" id="username" placeholder="请输入用户名" ng-model="euc.userName" ng-change="euc.isNull()">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="email" class="col-sm-3 control-label"><span style="color:red;">*</span>邮　　箱：</label>
+		    <div class="col-sm-9">
+		      <input type="text" class="form-control" id="email" placeholder="请输入邮箱帐号" ng-model="euc.email" ng-change="euc.isNull()">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="newpassword" class="col-sm-3 control-label"><span style="color:red;">*</span>密　　码：</label>
+		    <div class="col-sm-9">
+		      <input type="password" class="form-control" id="password" placeholder="请输入密码" ng-model="euc.password">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="repassword" class="col-sm-3 control-label"><span style="color:red;">*</span>确认密码：</label>
+		    <div class="col-sm-9">
+		      <input type="password" class="form-control" id="repassword" placeholder="请再次输入密码" ng-model="euc.rePassword">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="truename" class="col-sm-3 control-label">真实姓名：</label>
+		    <div class="col-sm-9">
+		      <input type="text" class="form-control" id="truename" placeholder="真实姓名" ng-model="euc.truename">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="phone" class="col-sm-3 control-label">手机号码：</label>
+		    <div class="col-sm-9">
+		      <input type="text" class="form-control" id="phone" placeholder="手机号码" ng-model="euc.phone">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="description" class="col-sm-3 control-label">用户描述：</label>
+		    <div class="col-sm-9">
+		      <textarea id="description"  placeholder="用户描述" ng-model="euc.description"  class="form-control"></textarea>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-3 col-sm-9">
+		      <button type="submit" class="btn btn-info" ng-disabled="euc.isDisabled" ng-click="euc.goSubmit()">确认</button>
+		    </div>
+		  </div>
+		</form>
+		<div class="tipsShow" ng-style="euc.tipsShowStyle">{{euc.tipsMessage}}</div>
+	</div>
+</div>

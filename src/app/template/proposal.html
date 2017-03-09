@@ -1,0 +1,11 @@
+<div style="position: relative;">
+  <i class="icon-btn icon-small-close" style="position:absolute;right:5px;top:6px;"
+    ng-show="closeShow"
+    ng-click="clearValue()"></i>
+  <input class="proposal-input" type="text">
+  <div style="height:0;">
+    <div class="proposal-area"
+      ng-show="show" ng-transclude>
+    </div>
+  </div>
+</div>

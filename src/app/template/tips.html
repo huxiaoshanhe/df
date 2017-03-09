@@ -1,0 +1,67 @@
+<div ng-controller="tipsCtrl as tc" class="tips">
+	<div class="tips-bg"></div>
+	<div class="tips-list tips1">
+		<div class="focus"></div>
+		<div class="info"><img src="assets/images/tips/tips-hlzz.png" /></div>
+	</div>
+	
+	
+	<div class="tips-list tips2" ng-style="tc.zy.style_add">
+		<div class="focus"><img src="assets/images/tips/tips-add_btn.png" /></div>
+		<div class="info"><img src="assets/images/tips/tips-addCode.png" /></div>
+	</div>
+	
+	<div class="tips-list tips3">
+		<div class="info"><img src="assets/images/tips/tips-search.png" /></div>
+	</div>
+	
+	<div class="tips-list tips4">
+		<div class="zy" ng-style="tc.zy.style"></div>
+		<div class="focus"><img src="assets/images/tips/tips-dragFocus.png" /></div>
+		<div class="info"><img src="assets/images/tips/tips-drag1.png" /></div>
+		<div class="info2"><img src="assets/images/tips/tips-drag2.png" /></div>
+	</div>
+	
+	<div class="tips-list tips5">
+		<div class="zy" ng-style="tc.zy.style_time"></div>
+		<div class="focus"><img src="assets/images/tips/tips-times.png" /></div>
+		<div class="info"><img src="assets/images/tips/tips-rightMenu.png" /></div>
+	</div>
+	
+	<div class="tips-list tips6">
+		<div class="focus"></div>
+		<div class="info"><img src="assets/images/tips/tips-mapCharts.png" /></div>
+	</div>	
+	
+	<div class="tips-list tips7">
+		<div class="focus">分析预测</div>
+		<div class="info"><img src="assets/images/tips/tips-analysis.png" /></div>
+	</div>
+	
+	<div class="tips-list tips8">
+		<div class="focus" ng-bind="tc.username"></div>
+		<div class="info"><img src="assets/images/tips/tips-mydata.png" /></div>
+	</div>
+	<div class="tips-list tips9" ng-style="tc.zy.style_info">
+		<div class="zy" ng-style="tc.zy.style_infozy"></div>
+		<div class="focus"><img src="assets/images/tips/tips-infoFocus.png" /></div>
+		<div class="info"><img src="assets/images/tips/tips-infomation.png" /></div>
+	</div>
+	<div class="buttons">
+		<div class="prev" ng-class="{'none':tc.now_tips===1}" ng-click="tc.prevTips(tc.now_tips)"><img src="assets/images/tips/tip-prev.png"/></div>
+		<div class="next" ng-class="{'none':tc.now_tips===9}" ng-style="tc.zy.style_next_start" ng-click="tc.nextTips(tc.now_tips)"><img class="imgNext" src="assets/images/tips/tip-next.png"/><img class="imgGo" src="assets/images/tips/tip-goNow.png"/></div>
+		<div class="clear"></div>
+		<ul class="list">
+			<li ng-class="{'on':tc.now_tips===1}" ng-click="tc.show(1)"></li>
+			<li ng-class="{'on':tc.now_tips===2}" ng-click="tc.show(2)"></li>
+			<li ng-class="{'on':tc.now_tips===3}" ng-click="tc.show(3)"></li>
+			<li ng-class="{'on':tc.now_tips===4}" ng-click="tc.show(4)"></li>
+			<li ng-class="{'on':tc.now_tips===5}" ng-click="tc.show(5)"></li>
+			<li ng-class="{'on':tc.now_tips===6}" ng-click="tc.show(6)"></li>
+			<li ng-class="{'on':tc.now_tips===7}" ng-click="tc.show(7)"></li>
+			<li ng-class="{'on':tc.now_tips===8}" ng-click="tc.show(8)"></li>
+			<li ng-class="{'on':tc.now_tips===9}" ng-click="tc.show(9)"></li>
+		</ul>
+	</div>
+	<div class="closeTips" ng-click="tc.closeTips()"></div>
+</div>

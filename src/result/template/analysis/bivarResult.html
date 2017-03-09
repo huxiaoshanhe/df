@@ -1,0 +1,23 @@
+﻿
+<div class="result" style="margin: 0 auto;">
+    <div class="directory"></div>
+    <div class="result-title">
+        <h1>双变量分析结果</h1>
+    <span class="header-tools">
+      <i class="icon icon-r icon-r-download"></i>
+      <i class="icon icon-r icon-r-share" title="分享"
+         ng-if="brc.isShare"
+         ng-click="brc.share(brc.shareId)"></i>
+    </span>
+    </div>
+    <div ng-repeat="paragraph in brc.textResult">
+        <a ng-if="paragraph.name" id="t{{$index}}" href="#" class="mamam" data-text="{{paragraph.name}}"></a>
+        <font class="part-title" ng-bind="paragraph.name"></font>
+        <div class="part">
+            <div class="part-font"
+                 ng-repeat="key in paragraph.keys"
+                 ng-bind-html="brc.trustAsHtml(paragraph[key])"></div>
+        </div>
+    </div>
+</div>
+

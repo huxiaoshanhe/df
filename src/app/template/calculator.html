@@ -1,0 +1,79 @@
+<div class="analysis-dialog calculator">
+  <div class="dialog-inner">
+    <div class="dialog-header">
+    高级计算器 <span class="clear-result" ng-click="clear()">清除计算结果</span>
+      <span class="icon-bar">
+        <i class="icon remove" ng-click="close()"></i>
+      </span>
+    </div>
+
+    <div class="dialog-content" style="padding-bottom:0;">
+        <div class="counter-tool">
+            <div class="tool-inner">
+                <div class="term1">
+                    <span>目标变量：</span>
+                    <input type="text" ng-model="target_dept">
+                </div>
+                <div class="denghao">=</div>
+                <div class="term2">
+                    <span>计算表达式：</span>
+                    <input type="text" id="cobol" ng-model="cobol" ng-keyup="keyClick($event)" ng-click="getCursor()" ng-change="getCursor()" />
+                </div>
+                <div class="term3">
+                    <span>已有变量：</span>
+                    <div class="select">
+                        <ul>
+                            <li ng-repeat="li in dept" ng-class="{'on':li.index==selectRecord.dept}" ng-click="selectDept2(li.index)" ng-dblclick="selectDept(li.index)">{{li.name}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="up-btn" ng-click="selectDept(selectRecord.dept)"></div>
+            </div>
+        </div>
+        <div class="counter-keyboard">
+           <span class="btn-left btn-1" ng-click="insertStr('(')">(</span>
+           <span class="btn-1" ng-click="insertStr(')')">)</span>
+           <span class="btn-1" ng-click="insertStr('^')" title="乘方"><img src="assets/images/btn-img/up-arrow.png"> </span>
+           <span class="btn-1" ng-click="insertFn('RECIPORC()')" title="取倒数">1/X</span>
+           <span class="btn-1" ng-click="delStr()"><img src="assets/images/btn-img/left-arrow.png" title="删除"></span>
+           <span class="btn-1 ce" ng-click="delLatestnum()">CE</span>
+           <span class="btn-1 ce" ng-click="reset()">C</span>
+           <span class="btn-left btn-2" ng-click="insertFn('ARCSIN()')"><img src="assets/images/btn-img/arcsin.png"></span>
+           <span class="btn-2" ng-click="insertFn('SIN()')">sin</span>
+           <span class="btn-2" ng-click="insertFn('ABS()')">abs</span>
+           <span class="btn-2" ng-click="insertFn('LN()')">ln</span>
+           <span class="btn-2 purple" ng-click="insertNum('7')">7</span>
+           <span class="btn-2 purple" ng-click="insertNum('8')">8</span>
+           <span class="btn-2 purple" ng-click="insertNum('9')">9</span>
+           <span class="btn-2" ng-click="insertStr('+')">+</span>
+           <span class="btn-2" ng-click="insertStr('-')"><img src="assets/images/btn-img/minus.png"></span>
+           <span class="btn-left" ng-click="insertFn('ARCCOS()')"><img src="assets/images/btn-img/arccos.png"></span>
+           <span ng-click="insertFn('COS()')">cos</span>
+           <span ng-click="insertFn('FLOOR()')">floor</span>
+           <span ng-click="insertFn('LOG()')">log</span>
+           <span class="purple" ng-click="insertNum('4')">4</span>
+           <span class="purple" ng-click="insertNum('5')">5</span>
+           <span class="purple" ng-click="insertNum('6')">6</span>
+           <span ng-click="insertStr('*')">*</span>
+           <span ng-click="insertStr('/')">/</span>
+           <span class="btn-left" ng-click="insertFn('ARCTAN()')"><img src="assets/images/btn-img/arctan.png"></span>
+           <span ng-click="insertFn('TAN()')">tan</span>
+           <span ng-click="insertFn('CEIL()')">ceil</span>
+           <span ng-click="insertFn('EXP()')">exp</span>
+           <span class="purple" ng-click="insertNum('1')">1</span>
+           <span class="purple" ng-click="insertNum('2')">2</span>
+           <span class="purple" ng-click="insertNum('3')">3</span>
+           <span class="purple" ng-click="insertNum('π')">π</span>
+           <span class="equal" ng-click="calculatorGo()" ng-class="{'disabled':startButton()===false}"><img src="assets/images/btn-img/equal.png"></span>
+           <span class="btn-left" ng-click="insertFn('ARCCOT()')"><img src="assets/images/btn-img/arccot.png"></span>
+           <span ng-click="insertFn('COT()')">cot</span>
+           <span ng-click="insertFn('MOD()')">mod</span>
+           <span ng-click="insertFn('ROOT()')"><img src="assets/images/btn-img/gen.png"></span>
+           <span class="ce purple" ng-click="insertNum('0')">0</span>
+           <span ng-click="insertNum('.')"><img src="assets/images/btn-img/point.png"></span>
+           <span class="purple" ng-click="insertStr('e')">e</span>
+           <div class="clear"></div>
+        </div>
+    </div>
+  </div>
+</div>

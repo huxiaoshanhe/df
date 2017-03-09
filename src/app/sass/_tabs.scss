@@ -1,0 +1,49 @@
+@import "global";
+@import "icons";
+// 选项卡定义
+
+// 选项卡项盒子
+$tabs-item-width: rem-calc(140);
+$tabs-item-selected-width: rem-calc(160);
+$tabs-item-height: rem-calc(31);
+$tabs-item-padding: 0 14px 0 9px;
+$tabs-item-padding-left: 10px;
+
+$tabs-item-font-color: rgba(0, 0, 0, .6);
+$tabs-item-selected-color: #87c4ff;
+$tabs-item-border-color: #d3d7dd;
+$tabs-item-bg-color: #e3e5e7;
+
+@include exports("tabs") {
+
+  .tabs-item {
+    position: relative;
+    display: inline-block;
+    height: $tabs-item-height;
+    width: $tabs-item-width;
+    padding: $tabs-item-padding;
+    margin-right: -1px;
+
+    font-size: 12px;
+    line-height: ($tabs-item-height - rem-calc(2));
+    border-bottom: 4px solid #fff;
+    color: $tabs-item-font-color;
+    vertical-align: middle;
+    cursor: pointer;
+
+    &.selected {
+      width: $tabs-item-selected-width;
+      color: $black;
+      background-color: #E5F2FD;
+      border-bottom: 4px solid #409BF5;
+    }
+
+    .icon-small-close {
+      @include posi-vertical-middle(8px, null, 10px);
+      width:13px;
+      height:13px;
+      background-image:url('../assets/images/icon-collections.png');
+      background-position:0 -167px;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+<div class="analysis-dialog">
+	<div class="dialog-inner">
+		<div class="dialog-header">
+		HP滤波
+		  <span class="icon-bar">
+		    <i class="icon remove" ng-click="close()"></i>
+		  </span>
+		</div>
+
+		<div class="dialog-content" style="padding-bottom:0;">
+		  <table style="width: 100%;">
+			  <tbody>
+			    <tr>
+			      <th class="tableLeft">因变量：</th>
+			      <td>
+			        <div class="aggregation-input">
+				        <div class="nowYbl" ng-click="showList('.aggregation-input',event)">{{selectRecord.deptName}}<em class="ico-down"></em></div>
+				        <ul>
+				        	<li ng-repeat="li in data.variables" ng-click="selectDept(li.index,li.name)">{{li.name}}</li>
+				        </ul>
+			        </div>
+			      </td>
+			    </tr>
+			  </tbody>
+		  </table>
+		</div>
+
+		<div class="dialog-bottom">
+		  <button class="tiny cancel" ng-click="close();">取消</button>
+		  <button class="small confirm"
+		    ng-class="{'disabled':startButton()==0}"
+		    ng-click="hpfilterGo()">确定</button>
+		</div>
+	</div>
+</div>

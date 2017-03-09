@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>个人中心</title>
+	<link rel="stylesheet" href="member/css/bootstrap.min.css">
+	<link rel="stylesheet" href="member/css/font-awesome.min.css">
+	<link rel="stylesheet" href="member/css/style.css">
+</head>
+<body ng-app="member">
+	<div class="top container">
+		<div class="logo">
+				<a href="http://kdd.epsnet.com.cn/"><img src="member/images/logo.gif"  onmouseenter="this.src='member/images/logo.gif?tamp=' + new Date().getTime();"></a>
+		</div>
+	
+		<div class="top-r">
+			<ul>				
+				<li ng-bind="userInfo.userName"></li>
+				<span>|</span>
+				<li ng-controller="userCtrl as uc"><a ng-click="uc.logOut()">退出</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="main container">
+		<div ui-view=""></div>		
+	</div>	
+
+
+	<script type="text/javascript" src="member/js/jquery.min.js"></script>
+	<script type="text/javascript" src="member/js/angular.min.js"></script>
+	<script type="text/javascript" src="member/js/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="member/js/member.js"></script>
+	<script type="text/javascript" src="member/js/ngDialog.min.js"></script>
+	<script type="text/javascript" src="member/app/error.service.js"></script>
+	<script type="text/javascript" src="member/app/data.service.js"></script>
+	<script type="text/javascript" src="member/app/mydatas.controller.js"></script>
+	<script type="text/javascript" src="member/app/keywordsHistory.controller.js"></script>
+	<script type="text/javascript" src="member/app/indicatorHistory.controller.js"></script>
+	<script type="text/javascript" src="member/app/controlHistory.controller.js"></script>
+	<script type="text/javascript" src="member/app/updatePass.controller.js"></script>
+	<script type="text/javascript" src="member/app/userManage.controller.js"></script>
+	<script type="text/javascript" src="member/app/addUser.controller.js"></script>
+	<script type="text/javascript" src="member/app/editUser.controller.js"></script>
+
+	<script>
+		var main_height=$(window).height()-$(".top").height()-3;
+		$(".main").height(main_height);
+	</script>
+</body>
+</html>

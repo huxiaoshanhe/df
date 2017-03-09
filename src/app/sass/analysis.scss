@@ -1,0 +1,161 @@
+.analysis-background {
+	position:absolute;
+	width:100%;
+	height:100%;
+	background:#000;
+	top:0;
+	left:0;
+	z-index:999;
+	filter:alpha(opacity=10); 
+	-moz-opacity:0.1; 
+	opacity:0.1;
+}
+.analysis-dialog {
+	position:absolute;
+	width:510px;
+	height:auto;
+	top:105px;
+	z-index:1000;
+	background:#fff;
+	border:1px solid #aaa;
+	resize:horizontal;
+	padding-bottom:50px;
+	border-radius:5px;
+	overflow:hidden;
+}
+.analysis-dialog .dialog-inner {
+	width:100%;
+	height:100%;
+	position:relative;
+}
+.dialog-header .remove{
+	display:inline-block;
+	width:13px;
+	height:13px;
+	background:url('../assets/images/icon-collections.png') -2px -184px;
+	margin:10px -10px 0 0;
+	cursor:pointer;
+}
+
+.dialog-content table {
+	width:100%;
+}
+.dialog-content table td {
+	padding:0 5px 0 0;
+}
+.dialog-content .tableLeft {
+	width:80px;
+	font-size:14px;
+}
+.dialog-content .nowYbl {
+	border:1px solid #ccc;
+	border-radius:4px;
+	font-size:12px;
+	height:26px;
+	line-height:26px;
+	text-indent:10px;
+	position:relative;
+	margin-right:15px;
+	cursor:pointer;
+}
+.dialog-content .nowYbl .ico-down {
+	display:block;
+	width:7px;
+	height:4px;
+	background:url('../assets/images/arrow-drop-icon.png');
+	position:absolute;
+	right:5px;
+	top:10px;
+}
+.dialog-content .ybl {
+	width:100%;
+	margin-right:5px;
+}
+.dialog-content .ybl ul {
+	width:100%;
+	margin-right:5px;
+}
+.dialog-content .zbl {
+	width:100%;
+	margin-right:10px;
+}
+.dialog-content .select-ways {
+	font-size:12px;
+}
+.dialog-content .params-set .params-bt {
+	font-size:14px;
+	left:10px;
+}
+.dialog-content .params-set {
+	width:100%;
+	padding:0 20px;
+}
+.dialog-content .params-set .save-items .zxsp {
+	font-size:12px;
+	padding:0;
+}
+.dialog-content .params-set .save-items .zxsp ul {
+	margin-left:-10px;
+}
+.dialog-content .params-set .system-items .zxsp {
+	font-size:12px;
+}
+.dialog-content .params-set .system-items .zxsp ul {
+	margin-left:-15px;
+}
+
+.dialog-content .attention {
+	font-size:12px;	
+}
+.dialog-content .attention td {
+	padding:10px 0 0 0;
+}
+
+.dialog-content .autocorre .zhjs {
+	font-size:12px;
+}
+
+
+.dialog-bottom {
+	position:absolute;
+	bottom:-50px;
+	right:0;
+	width:100%;
+}
+.ui-icon, .ui-widget-content .ui-icon {
+	background-image:url('../assets/images/ui-icons_222222_256x240.png');
+}
+.analysis-dialog.calculator {
+	width:518px;
+	height:525px;
+	background:#FAFAFA;
+}
+.analysis-dialog.calculator .ui-icon, .ui-widget-content .ui-icon {
+	background-image:none;
+}
+
+.analysis-dialog .clear-result {
+    background: #fff;
+    color: #666;
+    margin-left: 80px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.analysis-dialog .clear-result:hover {
+	background:#f0f0f0;
+}
+
+
+
+
+
+.returnback .params-set .routine {
+	font-size:14px;
+}
+.bivar .sel-params span {
+	font-size:14px;
+}
+.bivar p {
+	font-size:14px;
+}

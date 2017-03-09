@@ -1,0 +1,35 @@
+﻿<div class="result" style="margin: 0 auto;">
+    <div class="directory" style="left: 1392.5px; position: fixed;"></div>
+    <div class="result-title">
+        <h1>线性回归分析结果</h1>
+    <span class="header-tools">
+      <i class="icon icon-r icon-r-download"></i>
+      <i class="icon icon-r icon-r-share" title="分享"
+         ng-if="lrc.isShare"
+         ng-click="lrc.share(lrc.shareId)"></i>
+    </span>
+    </div>
+    <div ng-repeat="paragraph in lrc.textResult">
+        <a ng-if="paragraph.name" id="t{{$index}}" href="#" class="mamam" data-text="{{paragraph.name}}"></a>
+        <font class="part-title" ng-bind="paragraph.name"></font>
+        <div class="part">
+            <div class="part-font"
+                 ng-repeat="key in paragraph.keys"
+                 ng-bind-html="lrc.trustAsHtml(paragraph[key])"></div>
+        </div>
+    </div>
+    <div ng-if="lrc.lineChart">
+        <a id="c1" href="#" class="mamam" data-text="模型图"></a>
+        <font class="part-title">模型图</font>
+        <div class="part">
+            <chart chart-data="lrc.lineChart"></chart>
+        </div>
+    </div>
+    <div ng-if="lrc.barChart">
+        <a id="c2" href="#" class="mamam" data-text="残差图"></a>
+        <font class="part-title">残差图</font>
+        <div class="part">
+            <chart chart-data="lrc.barChart"></chart>
+        </div>
+    </div>
+</div>

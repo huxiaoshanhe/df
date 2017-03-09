@@ -1,0 +1,74 @@
+<div class="dialog-header">
+保存到我的收藏夹
+  <span class="icon-bar">
+    <i class="icon remove"></i>
+  </span>
+</div>
+
+<div class="dialog-content mycollection" style="padding-bottom:0;">
+  <div class="mycollect" style="display:block;margin:0;left:0;">
+		<div class="m-tool">
+			<ul>
+				<li class="new-file-btn" ng-click="sdc.shownewFiles()">新建文件夹</li>				
+			</ul>			
+		</div>
+		<div class="m-l-s">
+			<span class="list-style-btn" ng-class="{'on':sdc.isTable!==true}" ng-click="sdc.isTable=false"></span>
+			<span class="tab-style-btn" ng-class="{'on':sdc.isTable===true}" ng-click="sdc.isTable=true"></span>
+			<span class="now-position">我的收藏夹<em ng-repeat="p in sdc.parents"><i></i><a href="javascript:;" ng-click="sdc.getFileChild(p.collectionCode,p.collectionName,true)">{{p.collectionName}}</a></em></span>
+			<input type="text" ng-model="sdc.file_keywords" placeholder="搜索我的数据文件" >
+			<a href="" class="btn" ng-click="sdc.sear_files()"></a>
+		</div>
+		<div class="m-main">
+			<div class="m-main-l save">
+				<dl>
+					<dt ng-click="sdc.allFiles()">全部文件</dt>
+					<dd ng-repeat="item in sdc.myds" ng-click="sdc.getFile(item.collectionCode,item.collectionName)" ng-class="{'on':sdc.selectFile.code2==item.collectionCode}">{{item.collectionName}}</dd>
+					<dd class="hide"><input type="text" ng-model="sdc.lname" id="save_left_new" value="新建文件夹" ng-blur="sdc.newFiles()" /></dd>
+				</dl>
+			</div>
+			<div class="m-main-r save">
+				<table cellpadding="0" cellspacing="0" ng-show="sdc.isTable!==true">
+					<thead>
+						<tr>
+							<td class="file-name">文件名</td>
+							<td class="file-size">大小</td>
+							<td class="modify-time">修改时间</td>
+							<td class="other"></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="file in sdc.list" ng-click="sdc.selectIndicate(file.collectionCode,file.collectionName,file.directory)" ng-class="{'on':sdc.selectFile.code==file.collectionCode}">
+							<td class="file-name" ng-class="{'directory':file.directory==true}" ng-dblclick="sdc.getFileChild(file.collectionCode,file.collectionName,file.directory)"><span collectionCode="{{file.collectionCode}}" parentid="{{file.parentID}}">{{file.collectionName}}</span></td>
+							<td>2K</td>
+							<td>{{file.lastModify}}</td>
+							<td></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td class="directory"><input type="text" ng-model="sdc.rname" id="save_right_new" value="新建文件夹" ng-blur="sdc.newFiles()" /></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tfoot>
+				</table>
+				
+				<div class="juzhen" ng-show="sdc.isTable===true">
+					<dl ng-repeat="jz in sdc.list" ng-click="sdc.selectIndicate(jz.collectionCode,jz.collectionName,jz.directory)" ng-class="{'on':sdc.selectFile.code==jz.collectionCode}" ng-dblclick="sdc.getFileChild(jz.collectionCode,jz.collectionName,jz.directory)" title="{{jz.collectionName}}">
+						<dt ng-class="{'file':jz.directory==true}"></dt>
+						<dd>{{jz.collectionName}}</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="dialog-bottom" style="position: relative;bottom: 0;">
+  <button class="tiny cancel" ng-click="closeThisDialog();">取消</button>
+  <button class="small confirm"
+    ng-class="{'disabled':sdc.startButton()==false}"
+    ng-click="sdc.saveGo()">保存</button>
+</div>

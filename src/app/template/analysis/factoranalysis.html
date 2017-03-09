@@ -1,0 +1,79 @@
+<div class="analysis-dialog">
+	<div class="dialog-inner">
+		<div class="dialog-header">
+		因子分析
+		  <span class="icon-bar">
+		    <i class="icon remove" ng-click="close()"></i>
+		  </span>
+		</div>
+
+		<div class="dialog-content returnback pcanalysis" style="padding-bottom:0;">
+		  <table style="width: 100%;">
+			  <tbody>
+			      <tr>
+			        <th class="tableLeft">选变量：</th>
+			        <td>
+			          <div class="zbl">
+			          	 <label class="checkbox" ng-repeat="indept in data.variables" ng-class="{'on': selectRecord.varIndexs.indexOf(indept.index)!==-1 }" ng-click="selectIndept(indept.index)">{{indept.name}}</label>
+			          </div>
+			        </td>
+			      </tr>
+			      <tr>
+			      	<td colspan="2">
+			      		<div class="sel-params">
+			      			<input type="text" ng-model="selectRecord.factorNum" placeholder="请输入因子数目" />
+			      		</div>
+			      		
+			      		<p>分析：
+			      			<span class="radio" ng-repeat="sp in data.analysis" ng-class="{'on':selectRecord.analysis==sp.methodId}" ng-click="selectRecord.analysis=sp.methodId">{{sp.methodName}}</span>
+			      		</p>	      		
+			      		
+			      		<div class="chouqu">抽取
+				      		<input type="text" ng-model="selectRecord.factorExtractionsName" readonly="readonly" ng-click="showList('.chouqu')" />
+				      		<ul>
+				      			<li ng-repeat="li in data.factorExtractions" ng-click="selectExtractions(li.methodId,li.methodName)">{{li.methodName}}</li>
+				      		</ul>
+			      		</div>
+			      		<div class="xuanzhuan">旋转
+				      		<input type="text" ng-model="selectRecord.facaRotatesName" readonly="readonly" ng-click="showList('.xuanzhuan')" />
+				      		<ul>
+				      			<li ng-repeat="li in data.factorRotates" ng-click="selectRotates(li.methodId,li.methodName)">{{li.methodName}}</li>
+				      		</ul>
+			      		</div>
+			      		<div class="scores">得分
+				      		<input type="text" ng-model="selectRecord.facaScoresName" readonly="readonly" ng-click="showList('.scores')" />
+				      		<ul>
+				      			<li ng-repeat="li in data.factorScores" ng-click="selectScores(li.methodId,li.methodName)">{{li.methodName}}</li>
+				      		</ul>
+			      		</div>
+			      		
+			      		<div class="cishu">
+			      			<div class="ccyddcs">重采样迭代次数：
+					      		<input type="text" ng-model="selectRecord.resampleIteNum" readonly="readonly" ng-click="showList('.ccyddcs')" />
+					      		<ul>
+					      			<li ng-click="selectResampleIteNum(1)">1</li>
+					      		</ul>
+				      		</div>
+				      		<div class="slddcs">收敛迭代次数：
+					      		<input type="text" ng-model="selectRecord.convergenceIteNum" readonly="readonly" ng-click="showList('.slddcs')" />
+					      		<ul>
+					      			<li ng-click="selectConvergenceIteNum(20)">20</li>
+					      			<li ng-click="selectConvergenceIteNum(50)">50</li>
+					      		</ul>
+				      		</div>
+				      		<div class="clear"></div>
+			      		</div>
+			      	</td>
+			      </tr>
+			    </tbody>
+		    </table>
+		</div>
+
+		<div class="dialog-bottom">
+		  <button class="tiny cancel" ng-click="close();">取消</button>
+		  <button class="small confirm"
+		    ng-class="{'disabled':startButton() == 0}"
+		    ng-click="factoryAnalysisGo()">确定</button>
+		</div>
+	</div>
+</div>

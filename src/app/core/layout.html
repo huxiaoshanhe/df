@@ -1,0 +1,64 @@
+<div id="plat-main"  loading="loading">
+  <div id="left-switch" ng-click="wb.leftSwitch()"></div>
+  <div id="plat-top">
+    <div id="logo">
+      <a href="http://kdd.epsnet.com.cn/"><img src="assets/images/logo.gif" onmouseenter="this.src='assets/images/logo.gif?tamp=' + new Date().getTime();" /></a>
+    </div>
+    <div class="top-user-info"><a href="./member.html" target="_blank" class="user-name">{{wb.userInfo.name}}</a>|<a href="./help.html" target="_blank">帮助</a>|<a href="javascript:;" ng-click="wb.logout()">退出</a></div>
+  </div>
+  <div id="plat-side" class="left nonesel">
+    <div id="plat-side-top">
+      <button class="large primary submit"
+        ng-click="wb.sync();">同步数据<i></i></button>
+    </div><!-- 侧边头结束 -->
+    <div id="plat-side-content" ng-controller="conditionCtrl as ccvm"
+      ng-include="'app/core/accordion.html'">
+    </div><!-- 侧边内容结束 -->
+  </div>
+
+  <div id="plat-body">
+    <div id="plat-body-hander" ng-controller="UserCtrl as uc">
+      <button id="plat-body-hamburger"></button>
+      <coolmenu data="wb.menudata" callback="wb.menuCallback" ></coolmenu>
+      <div id="plat-body-userInfo">{{ucvm.user.name}}</div>
+      
+      <toolbar></toolbar>
+    </div><!-- 头结束 -->
+
+    <div id="plat-body-info" style="display:none;" class="right width-transition"
+      ng-controller="InformationCtrl as icvm" ng-style="icvm.style">
+      <button id="plat-info-sudo" class="right" ng-click="icvm.toggle()"></button>
+      <scrollbar>
+        <div ng-include="'app/template/fiexible.html'"></div>
+      </scrollbar>
+    </div><!-- 附属信息结束 -->
+
+    <div id="plat-body-container" class="nonesel mr-transition" container>
+      <row>
+        <handsontable data="sc.sheet.table"></handsontable>
+      </row>
+      <row show="false">
+        <div style="height:100%;overflow:hidden;background-color:#fff;"
+          ng-controller="chartCtrl as cc">
+          <echarts chart="cc.charts"></echarts>
+        </div>
+      </row>
+      <div ng-include="'app/template/map.html'"></div>
+    </div><!-- 内容容器结束 -->
+
+    <div id="plat-body-footer">
+      <span class="tabs-item fn-fonthid"
+        ng-repeat="sheet in wb.workbook.sheets"
+        ng-class="{'selected':wb.workbook.index==$index}"
+        ng-click="wb.toggle($index)">
+        {{sheet.name}}
+        <i class="icon-btn icon-small-close"
+          ng-if="wb.workbook.sheets.length != 1"
+          ng-click="wb.remove($event, $index)"></i>
+      </span>
+      <i class="icon-btn icon-cross" ng-click="wb.openAddSheetDialog()"></i>
+    </div><!-- 选项卡结束 -->
+
+  </div><!-- 主体结束 -->
+  <div ng-include="'app/template/analysis/analysis.html'"></div>
+</div>

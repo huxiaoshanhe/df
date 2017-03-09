@@ -1,0 +1,14 @@
+<div class="acc-c-container" style="padding-top: 5px;"
+  ng-controller="LeftTreeSearchCtrl as lvscvm">
+  <!-- <input type="text" style="width: 191px;" value="ABV"> -->
+  <proposal placeholder="请输入关键字!" style="width:190px;"
+    query="lvscvm.query" show="lvscvm.show"
+    input-class=""
+    input-style="width:100%;">
+  <label class="checkbox break q fn-fonthid"
+    title="{{item.name}}"
+    ng-class="{'selected': item.isSelected}"
+    ng-repeat="item in lvscvm.data"
+    ng-click="lvscvm.selected(item)">{{item.name}}</label>
+  </proposal>
+</div>

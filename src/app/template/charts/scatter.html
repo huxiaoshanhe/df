@@ -1,0 +1,32 @@
+<div class="dialog-header">
+ 图表-<span class="blue" style="color:#fff;">散点图</span>
+  <span class="icon-bar">
+    <i class="icon remove"></i>
+  </span>
+</div>
+
+<div class="dialog-content charts" style="padding-bottom:0;">
+	<div class="table-h">
+		<table>
+			<tr>
+				<td class="indicator">选择指标</td><td class="fz fx">X轴</td><td class="fz fy">Y轴</td>
+			</tr>
+		</table>
+	</div>
+	<div class="table-b">
+		<table>
+			<tr ng-repeat = "ind in scc.indicator">
+				<td class="indicator">{{ind.name}}</td>
+				<td class="fz fx"><label class="checkbox" ng-class="{'on':scc.dept===ind.index}" ng-click="scc.selectDept(ind.index,ind.name)"></label></td>
+				<td class="fz fy"><label class="checkbox" ng-class="{'on':scc.indept.indexOf(ind.index)!==-1}" ng-click="scc.selectIndept(ind.index,ind.name)"></label></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<div class="dialog-bottom" style="position: relative;bottom: 0;">
+  <button class="tiny cancel" ng-click="closeThisDialog();">取消</button>
+  <button class="small confirm"
+    ng-class="{'disabled':scc.startButton() == 0}"
+    ng-click="scc.scatterGo()">确定</button>
+</div>

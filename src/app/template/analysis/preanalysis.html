@@ -1,0 +1,62 @@
+<div class="analysis-dialog">
+	<div class="dialog-inner">
+		<div class="dialog-header">
+		预分析
+		  <span class="icon-bar">
+		    <i class="icon remove" ng-click="close()"></i>
+		  </span>
+		</div>
+
+		<div class="dialog-content returnback preanalysis" style="padding-bottom:0;">
+		  <table style="width: 100%;">
+			  <tbody>
+			      <tr class="attention">
+			        <th class="tableLeft">选变量：</th>
+			        <td>
+			          <div class="zbl">
+			          	 <label class="checkbox" ng-repeat="indept in data.variables" ng-class="{'on': selectRecord.indept.indexOf(indept.index)!==-1 }" ng-click="selectIndept(indept.index)">{{indept.name}}</label>
+			          </div>
+			        </td>
+			      </tr>
+			      <tr>
+			      	<td colspan="2">
+			      		<div class="sel-params">
+			      			<span>平行检验：</span>
+			      			<div class="select-method">
+			      				方法：<input type="text" ng-model="selectRecord.methodName" ng-click="showList('.select-method')" readonly="readonly" />
+			      				<ul>
+			      					<li ng-repeat="li in data.methodLst" ng-click="selectMethod(li.methodId,li.methodName)">{{li.methodName}}</li>
+			      				</ul>
+			      			</div>
+			      			<div class="select-times">
+			      				迭代次数：<input type="text" ng-model="selectRecord.iteNum" ng-click="showList('.select-times')" readonly="readonly" />
+			      				<ul>
+			      					<li ng-click="selectTimes(20)">20</li>
+			      					<li ng-click="selectTimes(40)">40</li>
+			      					<li ng-click="selectTimes(60)">60</li>
+			      					<li ng-click="selectTimes(80)">80</li>
+			      					<li ng-click="selectTimes(100)">100</li>
+			      				</ul>
+			      			</div>
+			      			<div class="clear"></div>
+			      		</div>
+			      		<div class="sel-params">
+			      			<span>相关矩阵：</span>
+			      			<label class="checkbox" ng-class="{'on':selectRecord.CorreMatrix.indexOf('Kmobartllet')!==-1}" ng-click="selectCorreMatrix('Kmobartllet')">系数显著性水平</label>
+			      			<label class="checkbox" ng-class="{'on':selectRecord.CorreMatrix.indexOf('AntiImageCorreMatrix')!==-1}" ng-click="selectCorreMatrix('AntiImageCorreMatrix')">反映像矩阵</label>
+			      			<label class="checkbox" ng-class="{'on':selectRecord.CorreMatrix.indexOf('CorrelationMatrix')!==-1}" ng-click="selectCorreMatrix('CorrelationMatrix')">KMO和Bartlett球形检验</label>
+			      		</div>
+			      	</td>
+			      </tr>
+			    </tbody>
+		    </table>
+		</div>
+
+		<div class="dialog-bottom">
+		  <button class="tiny cancel" ng-click="close();">取消</button>
+		  <button class="small confirm"
+		    ng-class="{'disabled':startButton() == 0}"
+		    ng-click="preanalysisGo()">确定</button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,171 @@
+﻿// 主成分分析
+window.define(
+[],
+function () {
+var partsMap = [
+  {name: '变量解释', keys: ['variableProduces']},
+  {name: '模拟拟合度', keys: ['modelFit']},
+  {name: '残差', keys: ['residual']},
+  {name: '共因子方差', keys: ['commonFactorVariance']},
+  {name: '主成分信息【解释的总方差】', keys: ['pcInfo']},
+  {name: '成分矩阵【旋转前】', keys: ['beforeRotateMatrix']},
+  {name: '成分矩阵【旋转后】', keys: ['afterRotateMatrix']},
+  {name: '成分得分系数', keys: ['scoreCoefficientMatrix']},
+  {name: '成分得分协方差矩阵', keys: ['scoreCovarianceMatrix']}
+];
+
+var tHeadMap = {
+  'factorInfo': [
+    {'key': 'variableCodes', 'name': '成分'},
+    {'key': '', 'name': '初始特征值', 'child': [
+      {'key': 'initEigenTotal', 'name': '特征值'},
+      {'key': 'initEigenVariancePercent', 'name': '方差%'},
+      {'key': 'initEigenCumuPercent', 'name': '累积方差%'},
+    ]},
+    {'key': '', 'name': '提取特征值', 'child': [
+      {'key': 'extractSquaresTotal', 'name': '特征值'},
+      {'key': 'extractSquaresVariancePercent', 'name': '方差%'},
+      {'key': 'extractSquaresCumuPercent', 'name': '累积方差%'}
+    ]}
+  ]
+};
+
+  function lrResultsCtrl ($sce, $location, $routeParams, resultService) {
+    var that = this;
+    that.isShare = true;
+    that.textResult = null;
+    that.share = function (id) {
+      resultService.share('analysis_correlation', id);
+    };
+    that.trustAsHtml = function trustAsHtml (text) {
+      return $sce.trustAsHtml(text);
+    };
+
+    var parseMap = {
+      'variableProduces': function (array) {
+        var html = '';
+        angular.forEach(array, function(indic, i) {
+          var after = '';
+          html += '<p style="margin: 0 0 5px 0">'+ after + indic.key + '：' + indic.value + '</p>';
+        });
+        return html;
+      },
+      'modelFit': function (md) {
+        var headMap = [{'key': 'fitOff', 'name': 'fit'}, {'key': 'fitValue', 'name': 'fitoff'}];
+        var oneRow = [{'fitOff': md.fitOff, 'fitValue': md.fitValue}];
+        var cellKeys = resultService.getCellKeys(headMap);
+        var table = resultService.createTable(cellKeys, headMap, oneRow);
+        return $('<div>').append(table).html();
+      },
+      'residual': function (res) {
+        var axis = [''].concat(res.variableCodes);
+        var headMap = resultService.fsHeadMapByArray(axis);
+        var KV = resultService.parseMatrix(res.variableCodes, [res.residual]);
+        var table = resultService.createTable(KV.keys, headMap, KV.matrix);
+        return $('<div>').append(table).html();
+      },
+      'commonFactorVariance': function (c) {
+        var KV = resultService.parseVerticalData(c);
+        var headMap = [];
+        var abc = 0;
+        angular.forEach(c, function (item, i) {
+          if (i === 'communalityExtract') {
+            headMap.push({'key':'communalityExtract', 'name': '提取'});
+          } else if (i === 'communalityInit') {
+            headMap.push({'key':'communalityInit', 'name': '初始'});
+          }else{
+            headMap.push({'key':i, 'name': ''});
+          }
+          abc++;
+        });
+        var table = resultService.createTable(KV.keys, headMap, KV.data);
+        return $('<div>').append(table).html();
+      },
+      'pcInfo': function (fnm) {
+        var headMap = angular.copy(tHeadMap.factorInfo);
+        var KV = resultService.parseVerticalData(fnm);
+        var table = resultService.createTable(KV.keys, headMap, KV.data);
+        return $('<div>').append(table).html();
+      },
+'beforeRotateMatrix': function (bdata) {
+var KV = resultService.parseMatrix(bdata.variableCodes, [bdata.loadingsBeforeRotate]);
+var headMap = [
+  {'key': '', 'name': '&nbsp;'},
+  {'key': '', 'name': '成分', 'child': []}
+];
+for (var i = 0, ilen = bdata.components.length; i < ilen; i++) {
+   headMap[1].child.push({'key':i, 'name':bdata.components[i]});
+}
+var keys = [0].concat(bdata.components);
+var table = resultService.createTable(keys, headMap, KV.matrix);
+return $('<div>').append(table).html();
+},
+'afterRotateMatrix': function (bdata) {
+var KV = resultService.parseMatrix(bdata.variableCodes, [bdata.loadingsAfterRotate]);
+var headMap = [
+  {'key': '', 'name': '&nbsp;'},
+  {'key': '', 'name': '成分', 'child': []}
+];
+for (var i = 0, ilen = bdata.components.length; i < ilen; i++) {
+   headMap[1].child.push({'key':i, 'name':bdata.components[i]});
+}
+var keys = [0].concat(bdata.components);
+var table = resultService.createTable(keys, headMap, KV.matrix);
+return $('<div>').append(table).html();
+},
+'scoreCoefficientMatrix': function (data) {
+var KV = resultService.parseMatrix(data.variableCodes, [data.factorScoreCoeffiMatrix]);
+var headMap = [
+  {'key': '', 'name': '&nbsp;'},
+  {'key': '', 'name': '成分', 'child': []}
+];
+for (var i = 0, ilen = data.components.length; i < ilen; i++) {
+   headMap[1].child.push({'key':i, 'name':data.components[i]});
+}
+var keys = [0].concat(data.components);
+var table = resultService.createTable(keys, headMap, KV.matrix);
+return $('<div>').append(table).html();
+      },
+'scoreCovarianceMatrix': function (data) {
+var s = [];
+angular.forEach(data.components, function (val, i) {
+  s.push(val);
+});
+var KV = resultService.parseMatrix(s, [data.factorScoreCovariance]);
+var headMap = [
+  {'key': '', 'name': '成分'}
+];
+for (var i = 0, ilen = data.components.length; i < ilen; i++) {
+   headMap.push({'key': '', 'name': data.components[i]});
+}
+        var table = resultService.createTable(KV.keys, headMap, KV.matrix);
+        return $('<div>').append(table).html();
+}
+    };
+    
+
+    if ($routeParams.action === 'share') {
+      that.isShare = false;
+      // 问题?
+      resultService.getBackstage($routeParams.id).then(function (source) {
+        that.lineChart = source.lineChart;
+        var data = source.pcAnalysisBO;
+        that.textResult = resultService.parse(partsMap, parseMap, data);
+        // gaomao
+        resultService.directory(source.itemInfos);
+      });
+    } else {
+      var source = resultService.get('analysis_pcanalysis');
+      that.shareId = source.shareId;
+      that.lineChart = source.lineChart;
+      var data = source.pcAnalysisBO;
+      that.textResult = resultService.parse(partsMap, parseMap, data);
+      // gaomao
+      resultService.directory(source.itemInfos);
+      resultService.share(location.href+'/share/'+that.shareId, '主成分分析结果...', null, null, that.shareId);
+    }
+  }
+  lrResultsCtrl.$inject = ['$sce', '$location', '$routeParams', 'resultService'];
+
+  return lrResultsCtrl;
+});

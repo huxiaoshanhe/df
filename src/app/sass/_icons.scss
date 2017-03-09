@@ -1,0 +1,266 @@
+@import "global";
+
+$icon-container-width: rem-clac(16);
+$icon-container-width: rem-clac(16);
+
+// 图标容器
+// $width - 控制宽度可以显示的宽度
+// $height - 控制容器可以显示的高度
+@mixin icon-container (
+  $width: $icon-container-width,
+  $height: $icon-container-height) {
+
+  position: relative;
+  display: block;
+  height: $height;
+  line-height: $height;
+  overflow: hidden;
+}
+
+// 图标条决定定位
+@mixin icon-bar-posi ($c-height: null, $c-left: null, $c-right: null) {
+  position: relative;
+  & > .icon-bar {
+    line-height: 0;
+    @include posi-vertical-middle($c-height, $c-left, $c-right);
+  }
+}
+
+@include exports ("icons") {
+
+  .icon {
+    display: inline-block;
+  }
+
+  .icon-btn {
+    @extend .icon;
+    cursor: pointer;
+  }
+
+  .icon-col {
+    @extend .icon-row;
+    @include rotate2d(90deg);
+  }
+
+  // /assets/images/
+  .icon-sprite, .icon-add-search, .icon-arrow, .icon-background, .icon-blod, .icon-broken, .icon-carry, .icon-color, .icon-column, .icon-cross, .icon-curve, .icon-del, .icon-down, .icon-e, .icon-fail, .icon-file, .icon-filter, .icon-format, .icon-info, .icon-italics, .icon-left, .icon-less, .icon-middle, .icon-percent, .icon-pie, .icon-refresh, .icon-right, .icon-row, .icon-small-arrow, .icon-small-close, .icon-strikethrough, .icon-wuclose, .icon-wuxian {
+    background-image: url('../assets/images/icon-sdcdcecf3f5.png');
+    background-repeat: no-repeat;
+  }
+
+  .icon-add-search {
+    background-image:url('../assets/images/icon-collections.png');
+    background-position: 0 -152px;
+    height: 14px;
+    width: 14px;
+  }
+
+  .icon-arrow {
+    background-position: 0 -21px;
+    height: 5px;
+    width: 7px;
+  }
+
+  .icon-background {
+    background-position: 0 -26px;
+    height: 16px;
+    width: 16px;
+  }
+
+  .icon-blod {
+    background-position: 0 -42px;
+    height: 16px;
+    width: 16px;
+  }
+
+  .icon-broken {
+    background-position: 0 -58px;
+    height: 16px;
+    width: 16px;
+  }
+
+  .icon-carry {
+    background-position: 0 -74px;
+    height: 16px;
+    width: 16px;
+  }
+
+  .icon-color {
+    background-position: 0 -90px;
+    height: 14px;
+    width: 16px;
+  }
+
+  .icon-column {
+    background-position: 0 -104px;
+    height: 16px;
+    width: 16px;
+  }
+
+  .icon-cross {
+    background:url(../assets/images/cross-icon.png);
+    height: 20px;
+    width: 20px;
+  }
+
+  .icon-curve {
+    background-position: 0 -138px;
+    height: 16px;
+    width: 16px;
+  }
+
+  .icon-del {
+    background:url(../assets/images/close-icon-l.png) center no-repeat;
+    height: 15px;
+    width: 15px;
+  }
+  .icon-del:hover, .icon-del.del-hover {
+  	background-image: url('../assets/images/icon-sdcdcecf3f5.png');
+    background-position: 0 -154px;
+  }
+
+  .icon-down {
+    background-position: 0 -184px;
+    height: 16px;
+    width: 16px;
+  }
+
+  .icon-e {
+    background-position: 0 -200px;
+    height: 16px;
+    width: 16px;
+  }
+
+  .icon-fail {
+    background-position: 0 -216px;
+    height: 16px;
+    width: 16px;
+  }
+
+  .icon-file {
+    background-position: 0 -232px;
+    height: 16px;
+    width: 16px;
+  }
+
+  .icon-filter {
+    background-position: 0 -248px;
+    height: 16px;
+    width: 16px;
+  }
+
+  .icon-format {
+    background-position: 0 -264px;
+    height: 16px;
+    width: 16px;
+  }
+
+  .icon-info {
+    background-position: 0 -280px;
+    height: 18px;
+    width: 18px;
+  }
+
+  .icon-italics {
+    background-position: 0 -298px;
+    height: 16px;
+    width: 16px;
+  }
+
+  .icon-left {
+    background-position: 0 -314px;
+    height: 16px;
+    width: 16px;
+  }
+
+  .icon-less {
+    background-position: 0 -330px;
+    height: 16px;
+    width: 16px;
+  }
+
+  .icon-middle {
+    background-position: 0 -346px;
+    height: 16px;
+    width: 16px;
+  }
+
+  .icon-percent {
+    background-position: 0 -362px;
+    height: 16px;
+    width: 16px;
+  }
+
+  .icon-pie {
+    background-position: 0 -378px;
+    height: 16px;
+    width: 16px;
+  }
+
+  .icon-refresh {
+    background-position: 0 -394px;
+    height: 16px;
+    width: 16px;
+  }
+
+  .icon-right {
+    background-position: 0 -410px;
+    height: 16px;
+    width: 16px;
+  }
+
+  .icon-row {
+    background-image:url('../assets/images/icon-collections.png');
+    background-position: 0 -19px;
+    height: 16px;
+    width: 14px;
+  }
+  .icon-row:hover, .icon-row.row-hover {
+    background-position: 0 -37px;
+  }
+
+  .icon-small-arrow {
+    background-position: 0 -450px;
+    height: 3px;
+    width: 5px;
+  }
+
+  .icon-small-close {
+    background-position: 0 -453px;
+    height: 9px;
+    width: 8px;
+  }
+
+  .icon-strikethrough {
+    background-position: 0 -462px;
+    height: 16px;
+    width: 16px;
+  }
+
+  .icon-wuclose {
+    background-position: 0 -478px;
+    height: 15px;
+    width: 15px;
+  }
+
+  .icon-wuxian {
+    background-position: 0 -493px;
+    height: 9px;
+    width: 17px;
+  }
+.icon-add {width:16px;height:16px;background:url(../assets/images/add-icon.png) center no-repeat;}
+.icon-up {width:16px;height:16px;background:url(../assets/images/upload-icon.png) center no-repeat;}
+.icon-save {width:16px;height:16px;background:url(../assets/images/save-icon.png) center no-repeat;}
+.icon-print {width:16px;height:16px;background:url(../assets/images/print-icon.png) center no-repeat;}
+.icon-rotateBar {width:16px;height:16px;background:url(../assets/images/rotatebar-icon.png) center no-repeat;}
+.icon-ring {width:18px;height:16px;background:url(../assets/images/ring-icon.png) center no-repeat;}
+.icon-log {width:28px;height:16px;background:url(../assets/images/log-icon.png) center no-repeat;}
+.icon-e {width:20px;height:16px;background:url(../assets/images/ln-icon.png) center no-repeat;}
+.icon-exp {width:24px;height:16px;background:url(../assets/images/exp-icon.png) center no-repeat;}
+.icon-calculator {width:16px;height:16px;background:url(../assets/images/calculator-icon.png) center no-repeat;}
+.icon-broken {width:20px;height:16px;background:url(../assets/images/broken-icon.png) center no-repeat;}
+.icon-column {width:20px;height:16px;background:url(../assets/images/bar-icon.png) center no-repeat;}
+.icon-curve {width:20px;height:16px;background:url(../assets/images/area-icon.png) center no-repeat;}
+
+
+}

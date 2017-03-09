@@ -1,0 +1,248 @@
+@import "global";
+// 输入元素定义
+
+// 多选框尺寸
+$checkbox-box-width: rem-calc(11);
+$checkbox-box-height: rem-calc(11);
+$checkbox-text-spacing: rem-calc(8);
+
+// // 多选框颜色
+$checkbox-font-color: #3A3836;
+$checkbox-selected-font-color: $white;
+$checkbox-box-bg-color: #7c828b;
+$checkbox-box-border-color: #3f454c;
+$checkbox-box-selected-color: #64aff9;
+$checkbox-box-selected-bg-color: $white;
+
+$checkbox-break-box-bg-color: $white;
+$checkbox-break-box-border-color: #a3a4a5;
+$checkbox-break-box-selected-color: #64aff9;
+
+// 文本输入框
+$input-height: rem-calc(40);
+$input-padding-left: rem-calc(10);
+$input-border-color: #d3d8d9;
+
+// // 下拉框尺寸
+// $select-input-padding-top: 4px;
+// $select-input-padding-left: 10px;
+// $select-input-border-radius-size: 4px;
+// $select-dropdown-maring: -1px 0 0 0;
+// $select-dropdown-content-max-height: rem-calc(150);
+// $select-dropdown-content-padding: 5px 0 9px 0;
+// $select-dropdown-option-padding: 5px 10px;
+
+// $select-min-padding: 1px 7px; // 不调整行高
+
+// // 输入注释文本(小)
+// $input-text-width: rem-calc(40);
+// $input-text-height: rem-calc(20);
+// $input-text-margin-right: rem-calc(20);
+// $input-text-border-color: #d3d7d9;
+
+// // 下拉框颜色
+// $select-disabled-bg-color: #f0f0f0;
+// $select-input-border-color: #a3a4a5;
+// $select-input-font-color: rgba(0, 0, 0, .5);
+// $select-input-bg: linear-gradient(-179deg, #ffffff 0%, #fafafa 100%);
+// $select-input-active-bg-color: $white;
+// $select-dropdown-border-color: #a3a4a5;
+// $select-dropdown-hover-option-font-color: $white;
+// $select-dropdown-hover-option-bg: linear-gradient(-179deg, #67afe8 0%, #4b82ec 100%);
+// $select-description-color: #7d7d7d;
+
+// $select-input-box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, .5);
+// $select-dropdown-box-shadown: 1px 2px 2px 0px rgba(233, 233, 233, .5);
+
+// // 单选尺寸
+// $radio-point-diameter: rem-calc(15);
+// $radio-point-spacing: rem-calc(8);
+// $radio-point-border-color: gray;
+// $radio-selected-color: #64aff9;
+
+// 占全input
+$expand-input-height: rem-calc(38);
+$expand-input-width: 100%;
+$expand-input-border-color: #d3d5d9;
+$expand-input-font-size: rem-calc(16);
+
+// // 行内输入元素间隔
+// $inline-input-item-gap: rem-calc(6);
+
+@include exports("input") {
+
+  .checkbox {
+    display: inline-block;
+    color: $checkbox-font-color;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: $checkbox-box-width;
+      height: $checkbox-box-height;
+      margin: 0 $checkbox-text-spacing -1px 0;
+      border: 1px solid $black;
+      cursor: default;
+
+      border-color: #CEDBE6;
+      background-color: #fff;
+    }
+
+    &.selected {
+      color: $checkbox-selected-font-color;
+
+      &::before {
+        background:url('../assets/images/icon-collections.png') 0 -108px;
+      }
+    }
+
+    &.break { // 换一个皮肤
+      color: $black;
+      &:before {
+        border-color: $checkbox-break-box-border-color;
+      }
+      &.selected {
+        color: $black;
+        &:before { background-color: $checkbox-break-box-selected-color; };
+      }
+    }
+
+    &.q { color: gray; &.selected { color: gray; } }
+  }
+
+  .input {
+    height: $input-height;
+    line-height: $input-height;
+    padding-left: $input-padding-left;
+    border: 1px solid $input-border-color;
+    outline: 0;
+  }
+
+    // 占满input
+  .expand-input {
+    height: $expand-input-height;
+    width: $expand-input-width;
+    border: 1px solid $expand-input-border-color;
+    border-right: 0; border-left: 0;
+    font-size: $expand-input-font-size;
+    line-height: $expand-input-height;
+    outline: 0;
+  }
+
+  
+
+//   .radio {
+//     display: inline-block;
+//     cursor: pointer;
+//     margin-right: 20px;
+
+//     &.selected::before {
+//       background-color: $radio-selected-color;
+//       box-shadow: 2px 0 0 1px $white inset,
+//        0 2px 0 1px $white inset,
+//        -2px 0 0 1px $white inset,
+//        0 -2px 0 1px $white inset;
+//     }
+
+//     &::before {
+//       content: "";
+//       display: inline-block;
+//       width: $radio-point-diameter;
+//       height: $radio-point-diameter;
+//       vertical-align: middle;
+//       margin: -2px $radio-point-spacing 0 0;
+//       border: 1px solid $radio-point-border-color;
+//       border-radius: $radio-point-diameter;
+//     }
+//   }
+
+//   .select-description { color: $select-description-color; }
+
+//   .select-control {
+//     position: relative;
+//     display: inline-block;
+//     width: 100%;
+//     white-space: nowrap;
+
+//     // 功能按钮
+//     + .fn-btn { text-decoration: none;  color: #3ba5fd; }
+
+//     .select-input {
+//       padding: $select-input-padding-top $select-input-padding-left;
+//       border: 1px solid $select-input-border-color;
+//       border-radius: $select-input-border-radius-size;
+//       background: $select-input-bg;
+//       box-shadow: $select-input-box-shadow;
+//       line-height: 1.5;
+//       color: $select-input-font-color;
+//       cursor: pointer;
+
+//       @include icon-abs-before("triangle", (0, 0));
+//       &::before { top: auto; left: auto; right: $select-input-padding-left; }
+
+//       &.selected {  color: $black; }
+
+//       &.active {
+//         color: $black;
+//         background-image: none;
+//         background-color: $select-input-active-bg-color;
+//         border-bottom-left-radius: 0;
+//         border-bottom-right-radius: 0;
+//       }
+
+//       &.disabled {
+//         color: $select-input-font-color;
+//         background-image: none;
+//         background-color: $select-disabled-bg-color;
+//         cursor: default;
+//       }
+//     }
+
+//     .select-dropdown {
+//       position: absolute;
+//       z-index: 1;
+//       width: 100%;
+//       margin: $select-dropdown-maring;
+//       border: 1px solid $select-dropdown-border-color;
+//       background-color: $select-input-active-bg-color;
+//       box-shadow: $select-dropdown-box-shadown;
+//       @include side-radius(bottom, $select-input-border-radius-size);
+//     }
+
+//     .select-dropdown-content {
+//       max-height: $select-dropdown-content-max-height;
+//       padding: $select-dropdown-content-padding;
+//       overflow-x: hidden;
+//       overflow-y: auto;
+//     }
+
+//     .option {
+//       padding: $select-dropdown-option-padding; cursor: pointer;
+//       &.hover, &:hover {
+//         color: $select-dropdown-hover-option-font-color;
+//         background: $select-dropdown-hover-option-bg;
+//       }
+//     }
+
+//     &.min { // 小号
+//       .select-input { padding: $select-min-padding; }
+//       .option { padding: $select-min-padding !important; }
+//     }
+//   }
+
+//   .select-copulation { // 连接线
+//     display: inline-block;
+//     height: 1px;
+//     width: 10px;
+//     margin: 0 8px;
+//     vertical-align: middle;
+//     background-color: #a3a4a5;
+//   }
+
+//   .input-text + .select-control,
+//   .checkbox + .select-control { // 同行间隔
+//     margin-left:$inline-input-item-gap;
+//   }
+
+}

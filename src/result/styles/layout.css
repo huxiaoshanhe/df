@@ -1,0 +1,114 @@
+﻿/* 布局 */
+.h100 { height: 100%; }
+.wrapper {
+  width: 1200px;
+  margin: 0 auto;
+}
+/* =蒙版=底板,蒙版 .floor, .mask*/
+.floor {
+  position: relative;
+}
+/* =首页布局开始= */
+#index-gate {
+  height: 30px;
+  padding: 0 50px;
+}
+#index-gate .btn {
+  float: right;
+  height: 30px;
+  width: 80px;
+}
+#index-logo {
+  margin-top: 125px;
+  text-align: center;
+}
+#index-mainnav { margin-top: 35px; }
+#index-mainnav .search-group,
+#index-mainnav .products {
+  width: 540px;
+  margin: 0 auto;
+}
+#index-mainnav .products { padding: 0 40px; }
+#index-mainnav .search-group { margin-top: 15px; }
+#index-footer {
+  margin-top: 424px;
+  padding: 13px 30px 17px 50px;
+}
+/* =首页布局结束= */
+/* =平台布局开始= */
+#plat-main {
+  height: 100%;
+}
+#plat-left {
+  float: left;
+  width: 230px;
+  height: 100%;
+  padding-top: 100px;
+  background-color: #5E636B;
+}
+#plat-side {
+  float: right;
+  width: 290px;
+  height: 100%;
+  overflow: auto;
+  overflow-x: hidden;
+  position: relative;
+  border-left: 1px solid #A3A4A5;
+  border-top: 1px solid #d3d7d9;
+  background-color: #FEFEFE;
+}
+#plat-logo {
+  height: 100px;
+  margin-top: -100px;
+  padding-top: 18px;
+  text-align: center;
+}
+#plat-logo .btn {
+  width: 150px;
+  /* margin-top: 14px; */
+}
+#plat-content {
+  height: 100%;
+  padding-top: 76px;
+  padding-bottom: 33px;
+  margin-left: 230px;
+}
+#plat-hander {
+  height: 76px;
+  margin-top: -76px;
+}
+#plat-container {
+  height: 100%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  overflow: auto;
+}
+#plat-tabs {
+  height: 33px;
+}
+#plat-sidehook {
+  display: inline-block;
+  float: left;
+  height: 39px;
+  width: 40px;
+  padding: 9px 10px 17px 10px;
+  border: 0;
+}
+#plat-sidehook:after {
+  content: '';
+  height: 2px;
+  width: 20px;
+  background: #fff;
+  display: inline-block;
+  box-shadow: 0 -8px 0 #fff, 0 8px 0 #fff;
+}
+#plat-menu {
+  display: inline-block;
+  padding: 8px 0 6px 12px;
+}
+#plat-hander .toolbar {
+  padding-left: 52px;
+  overflow: hidden;
+}
+#plat-tabs { padding-left: 10px; }
+/* =平台布局结束= */

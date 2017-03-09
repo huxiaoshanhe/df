@@ -1,0 +1,27 @@
+<div>
+	<div class="title-main">
+	用户列表
+	<a class="btn" href="/member.html#/temp/addUser">添加</a>
+		<span class="btn" ng-click="umc.delete()">删除</span>
+	</div>
+	<div class="data-list">
+		<table>
+			<tr>
+				<th class="th1"><span class="checkbox" ng-click="umc.selectAll()" ng-class="{'checked':umc.selects.length===umc.userList.length}"><em></em></span></th>
+				<th>用户名</th>
+				<th class="text-center">邮箱</th>
+				<th class="text-center">创建时间</th>
+				<th class="text-center">手机</th>
+				<th class="text-center">操作</th>
+			</tr>
+			<tr ng-repeat="u in umc.userList" ng-class="{'on':umc.selects.indexOf(u.userId)!==-1}">
+				<td><span class="checkbox" ng-click="umc.select(u.userID)" ng-class="{'checked':umc.selects.indexOf(u.userID)!==-1}"><em></em></span></td>
+				<td ng-bind="u.userName"></td>
+				<td ng-bind="u.email" class="text-center"></td>
+				<td ng-bind="u.createTime" class="text-center"></td>
+				<td ng-bind="u.mobile" class="text-center"></td>
+				<td class="text-center"><a href="javascript:;" ng-click="umc.edit(u.userID)">编辑</a> <a href="javascript:;" ng-click="umc.del(u.userID)">删除</a></td>
+			</tr>
+		</table>
+	</div>
+</div>

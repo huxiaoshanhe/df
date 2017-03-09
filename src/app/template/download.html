@@ -1,0 +1,21 @@
+<div class="dialog-header">
+数据下载
+  <span class="icon-bar">
+    <i class="icon remove"></i>
+  </span>
+</div>
+
+<div class="dialog-content download">
+	<div class="sm">选择你要下载的数据格式</div>
+	<div class="style-list">
+		<span class="radio" ng-class="{'on':dc.selectRecord.type=='EXCEL'}" ng-click="dc.selectRecord.type='EXCEL'">excel</span>
+		<span class="radio" ng-class="{'on':dc.selectRecord.type=='CSV'}" ng-click="dc.selectRecord.type='CSV'">csv</span>
+	</div>
+</div>
+
+<div class="dialog-bottom" style="position: relative; bottom: 0;">
+  <button class="tiny cancel" ng-click="closeThisDialog();">取消</button>
+  <button class="small confirm"
+    ng-class="{'disabled':dc.startButton()==false}"
+    ng-click="dc.downloadGo()">确定</button>
+</div>

@@ -1,0 +1,55 @@
+<div class="dialog-content mydatas" style="padding-bottom:0;">
+	<div class="mydata">
+		<div class="triangle">
+			<div class="triangle2"></div>
+		</div>
+		<div class="my-content">
+			<div class="title">
+				<h3>我的数据库</h3>
+			</div>
+			<div class="blank"></div>
+			<div class="myDS">
+				<div class="bt" ng-click="mdc.mydsshow()">我的数据集</div>
+				<div class="con on">
+					<div class="DS_list_wrap">
+						<div class="DS_list">
+							<dl ng-repeat="file in mdc.mydataBases" ng-click="mdc.selectSingle(file.cude_id)" ng-mouseover="mdc.showRight($event)" ng-class="{'on':mdc.files.selectFiles.indexOf(file.cude_id)!==-1}" code="{{file.cude_id}}" ng-dblclick="mdc.openMydataBases(file.cude_id,file.is_file,file.owner,file.indictorCodeStr)">
+								<dt ng-class="{'file':file.is_file==1}" title="{{file.file_name}}"></dt>
+								<dd><a href="javascript:;" title="{{file.file_name}}">{{file.file_name}}</a></dd>
+							</dl>
+							<dl class="newfile" id="newfile">
+								<dt><img src="../../assets/images/file-icon.png" /></dt>
+								<dd><input type="text" value="新建文件夹" name="filename" ng-blur="mdc.newFiles2()" /></dd>
+							</dl>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="mydata_operate"><span class="new-file" title="新建文件夹" ng-click="mdc.shownewFiles2()"></span><span class="del-file" title="删除"  ng-click="mdc.delConfirm2()"></span><span class="edit-file" title="编辑" ng-click="mdc.renameFiles2()"></span><span class="back" ng-click="mdc.goBack()">返回上一级</span><span class="qxqx" ng-click="mdc.selectAll()">全选/取消</span></div>
+					<!-- <div class="confirm_bg"></div>
+					<div class="confirm_del">
+						<p><span class="close_confirm" ng-click="mdc.delFiles2(0)">X</span></p>
+						<div class="cont_confirm">你确定要永久删除吗？</div>
+						<div class="btns_confirm"><button class="cancel" ng-click="mdc.delFiles2(0)">取消</button><button class="sure" ng-click="mdc.delFiles2(1)">确定</button></div>						
+					</div> -->
+				</div>
+			</div>
+			<div class="sear-history">
+				<div class="bt" ng-click="mdc.historyshow()">搜索历史</div>
+				<div class="con" ng-style="mdc.autoStyle.style">	
+					<div class="line"></div>
+					<div class="tag-name">搜索历史</div>	
+					<label ng-repeat="his in mdc.history"  title="{{his.keywords}}">{{his.keywords}}</label>		
+				</div>
+			</div>
+			<div class="latest-check">
+				<div class="bt" ng-click="mdc.latestshow()">最近查看</div>
+				<div class="con on" ng-style="mdc.autoStyle.style">
+					<div class="line"></div>
+					<div class="tag-name">最近查看</div>			
+					<label ng-repeat="latest in mdc.latest" ng-click="mdc.openLatestCheck($index)" title="{{latest.name}}">{{latest.name}}</label>
+				</div>
+			</div>
+			<button class="upload" ng-click="mdc.showupload()">上传数据</button>
+		</div>
+	</div>
+</div>

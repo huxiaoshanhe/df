@@ -1,0 +1,37 @@
+.container{width:100%;height:auto;}
+.container_mid{width:1198px;height:auto;margin:auto;}
+.container_mid .container_logo{width:100%;height:78px;}
+.container_mid .container_top{width:1178px;height:30px;background:#409cf8;padding-left:20px;border:1px solid #cccccc;color:white;line-height:30px;}
+.container_mid .content{width:1198px;height:auto;border:1px solid #cccccc;border-top:none;border-radius:0 0 10px 10px;overflow:hidden;background:white;position:relative;}
+.container_mid .content .left_list{float:left;width:177px;min-height:610px;background:#fff;border-right:1px solid #cccccc;padding:30px 11px 20px 11px;}
+.container_mid .content .left_list .close{cursor:pointer;width:166px;height:28px;background:#bdc0c2;margin-bottom:5px;display:block;line-height:28px;font-size:14px;color:white;padding-left:12px;position:relative;}
+.container_mid .content .left_list .close img{position:absolute;right:15px;top:9px;}
+.container_mid .content .left_list .close::selection{background:none;}
+.container_mid .content .left_list .close::-moz-selection{background:none;}
+.container_mid .content .left_list .list_list{font-size:14px;padding:10px 0 10px 0px;display:none;}
+.container_mid .content .left_list .list_list>li>a{display:block;color:#404040;font-weight:bold;height:22px;line-height:22px;margin-bottom:5px;padding-left:15px;cursor:pointer;}
+.container_mid .content .left_list .list_list>li a::selection{background:none;}
+.container_mid .content .left_list .list_list>li a::-moz-selection{background:none;}
+.container_mid .content .left_list .list_list>li>a:hover{background:#cccccc;}
+.container_mid .content .left_list .list_list .on1{background:#cccccc;}
+.container_mid .content .left_list .list_list .on2{background:#eeeeee;}
+.container_mid .content .left_list .list_list>li ul{font-size:14px;padding:0 0 5px 0px;}
+.container_mid .content .left_list .list_list>li ul li a{display:block;font-size:14px;color:#585858;padding-left:25px;height:18px;line-height:18px;margin-bottom:2px;cursor:pointer;}
+.container_mid .content .left_list .list_list>li ul li a:hover{background:#eeeeee;}
+.container_mid .content .main_content{float:right;width:998px;min-height:660px;background:#fff;border-left:1px solid #cccccc;margin-left:-1px;}
+.container_mid .content .main_content .main_header{width:917px;margin:auto;height:88px;border-bottom:1px solid #cccccc;}
+.container_mid .content .main_content .main_header h2{color:#5d5d5d;font-size:24px;float:left;margin-top:40px;padding-left:10px;}
+.container_mid .content .main_content .main_header span{font-size:12px;text-align:center;color:#585858;display:block;float:left;margin-top:48px;margin-left:15px;}
+.container_mid .content .main_content .main_header span a{margin-left:7px;}
+.container_mid .content .main_content .main_header .search_box{width:253px;height:25px;border:1px solid #409cf8;float:right;margin-top:18px;}
+.container_mid .content .main_content .main_header .search_box input{width:220px;height:12px;border:none;font-size:12px;padding:5px 0 5px 5px;}
+.container_mid .content .main_content .main_header .search_box input:focus {outline:none;}
+.container_mid .content .main_content .main_header .search_hot{font-size:12px;text-align:center;color:#585858;display:block;float:right;margin-top:5px;margin-right:5px;}
+.container_mid .content .main_content .main_header .search_hot a{color:#409cf8;}
+.container_mid .content .main_content .main_text{width:917px;margin:auto;}
+.container_mid .content .main_content .page_tab{width:917px;height:28px;background:#d3d4d1;position:absolute;left:235px;bottom:20px;}
+.container_mid .content .main_content .page_tab .prev{display:block;padding:0 10px;height:20px;float:left;margin-left:30px;background:#f9fcfb;margin-top:4px;text-align:center;color:#409cf8;line-height:20px;border-radius:4px 4px;font-size:14px;}
+.container_mid .content .main_content .page_tab .next{display:block;padding:0 10px;height:20px;float:right;margin-right:30px;background:#f9fcfb;margin-top:4px;text-align:center;color:#409cf8;line-height:20px;border-radius:4px 4px;font-size:14px;}
+.go-top {width:55px;height:55px;background:url(../imgs/go-top.png);position:fixed;bottom:140px;display:none;cursor:pointer;}
+.go-top:hover {background:url(../imgs/go-tophover.png);}
+

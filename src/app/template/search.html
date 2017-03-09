@@ -1,0 +1,88 @@
+<div style="position: absolute;">	
+	<div class="search window" style="position: relative;" id="search" ng-controller="searchCtrl as sear">
+		<div class="b-title">
+			<span class="close"></span>
+			查找指标
+		</div>
+		
+		<div class="inputs" ng-class="{'input2':sear.items.length==0}">
+			<input type="text" class="txt" name="keywords" ng-model="sear.keywords" ng-change="sear.getRecommends()" placeholder="请输入指标关键词" />
+			<input type="button" class="btn" ng-click="sear.sousuo()" />
+			<ul class="recommend_keywords">
+				<li ng-repeat="rk in sear.recommend_keywords" ng-click="sear.selectKeywords(rk.indicatorName)">{{rk.indicatorName}}</li>
+			</ul>		
+		</div>
+		
+		<div ng-class="{'hide':sear.items.length==0}">
+			<div class="page">
+				<ul>
+					<li class="tips-interval"><a></a></li>
+					<li class="tips-total"><a>共{{sear.items.docCount}}条</a></li>
+					<li class="tips-total"><a>第{{(sear.currentPage-1)*10+1}}-{{sear.currentPage*10}}条</a></li>
+					<li class="prev">
+						<a href ng-click="sear.prevPage()"></a>
+					</li>
+					<li><a>{{sear.currentPage}}</a></li>
+					<li class="next"><a href ng-click="sear.nextPage()"></a></li>
+				</ul>
+			</div>
+			<table cellpadding="0" cellspacing="0" class="result">
+				<thead>
+					<tr>
+						<th class="th1"><label class="checkbox selectall" ng-click="sear.selectall()" ng-class="{selected:sear.selectRecord.code.length==sear.items.entityList.length}"></label></th>
+						<th class="th2">名称</th>
+						<th class="th3 frequent">
+							<p>频度</p>
+							<ul>
+								<li ng-repeat="fr in sear.items.factMap.freqList|filter:fr.freqId" ng-click="sear.shaixuanFreq(fr.freqId,fr.name)">{{fr.name}}</li>
+							</ul>
+							<i class="del-condition" ng-click="sear.cancelCondition('frequent','频度')"></i>
+						</th>
+						<th class="th4 area">
+							<p>区域筛选</p>
+							<ul>
+								<li ng-repeat="ar in sear.items.factMap.cubeList|orderBy:'regclc'" ng-click="sear.shaixuanArea(ar.regclc,ar.name)">{{ar.name}}</li>
+							</ul>
+							<i class="del-condition" ng-click="sear.cancelCondition('area','区域筛选')"></i>
+						</th>
+						<th class="th5 field">
+							<p>领域筛选</p>
+							<ul>
+								<li ng-repeat="fi in sear.items.factMap.typeList" ng-click="sear.shaixuanField(fi.typeName)">{{fi.typeName}}</li>						              
+							</ul>
+							<i class="del-condition" ng-click="sear.cancelCondition('field','领域筛选')"></i>
+						</th>
+						<th class="th6 source">
+							<p>来源筛选</p>
+							<ul>
+								<li ng-repeat="or in sear.items.factMap.orgList" ng-click="sear.shaixuanSource(or.orgZh)">{{or.orgZh}}</li>
+							</ul>
+							<i class="del-condition" ng-click="sear.cancelCondition('source','来源筛选')"></i>
+						</th>
+						<th class="th7 publish">
+							<p>出版物筛选</p>
+							<ul>
+								<li ng-repeat="so in sear.items.factMap.sourceList" ng-click="sear.shaixuanPublish(so.sourceZh)">{{so.sourceZh}}</li>
+							</ul>
+							<i class="del-condition" ng-click="sear.cancelCondition('publish','出版物筛选')"></i>
+						</th>
+						<th class="th8">最新年份</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="result in sear.items.entityList">
+						<td class="center"><label class="checkbox" ng-class="{'selected': sear.selectRecord.code.indexOf(result.indicatorCode)!==-1}" ng-click="sear.searchselected(result.indicatorCode)" value="{{result.indicatorCode}}" title="{{result.nameZh}}"></label></td>
+						<td><p class="p1" title="{{result.nameZh}}">{{result.nameZh}}</p></td>
+						<td class="center"><p class="p2" title="{{result.freqId}}"><span ng-class="{'on':result.freqId===1}">年</span><span ng-class="{'on':result.freqId===3}">季</span><span ng-class="{'on':result.freqId===4}">月</span></p></td>
+						<td class="center"><p class="p3" title="{{result.area}}"><span ng-class="{'on':result.regclc===0}">国际数据</span><span ng-class="{'on':result.regclc===1}">国内数据</span><span ng-class="{'on':result.regclc===2}">省级数据</span><span ng-class="{'on':result.regclc===3}">市级数据</span><span ng-class="{'on':result.regclc==4}">县级数据</span></p></td>
+						<td class="center"><p class="p4" title="{{result.typeName}}">{{result.typeName}}</p></td>
+						<td class="center"><p class="p5" title="{{result.orgZh}}">{{result.orgZh}}</p></td>
+						<td class="center"><p class="p6" title={{result.sourceZh}}>{{result.sourceZh}}</p></td>
+						<td class="center"><span class="p7">{{result.lastDate}}</span></td>
+					</tr>
+				</tbody>
+			</table>		
+			<div class="btns"><button class="cancel">取消</button><button class="confirm" ng-click="sear.addIndicator()">添加指标</button></div>
+		</div>
+	</div>
+</div>

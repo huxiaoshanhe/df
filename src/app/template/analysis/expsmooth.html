@@ -1,0 +1,109 @@
+<div class="analysis-dialog">
+	<div class="dialog-inner">
+		<div class="dialog-header">
+		指数平滑
+		  <span class="icon-bar">
+		    <i class="icon remove" ng-click="close()"></i>
+		  </span>
+		</div>
+
+		<div class="dialog-content curve expsmooth" style="padding-bottom:0;">
+		  <table style="width: 100%;">
+			  <tbody>
+			      <tr>
+			        <th class="tableLeft">选变量：</th>
+			        <td>
+			          <div class="ybl">
+			          	<div class="nowYbl" ng-click="showList('.ybl',event)">{{selectRecord.indeptName}}<em class="ico-down"></em></div>
+			          	<ul>
+			          		<li ng-repeat="indept in data.indeptVars" ng-click="selectIndept(indept.index,indept.name)">{{indept.name}}</li>
+			          	</ul>
+			          </div>
+			        </td>
+			      </tr>
+			      
+			      <tr>
+			        <th class="tableLeft">选方法：</th>
+			        <td>
+			          <div class="xff">
+			          	<input type="text" ng-model="selectRecord.methodName" readonly="readonly" placeholder="请选择" ng-click="showList('.xff')" />
+			          	<ul>
+			          		<li ng-repeat="m  in data.methods" ng-click="selectMethod(m.methodId,m.methodName)">{{m.methodName}}</li>
+			          	</ul>
+			          </div>
+			        </td>
+			      </tr>
+			      
+			     <tr>
+			     	<th class="tableLeft">范围：</th>
+			     	<td>
+			     		  <div class="fanwei fanweis">
+				          	<input type="text" ng-model="selectRecord.startSectionName" readonly="readonly" placeholder="请选择" ng-click="showList('.fanweis')" />
+				          	<ul>
+				          		<li ng-repeat="t in data.sampleSections" ng-click="selectBeginTime(t.timeCode,t.name)">{{t.name}}</li>
+				          	</ul>
+				          </div>
+				          <div class="fanwei-gg">——</div>
+				          <div class="fanwei fanweie">
+				          	<input type="text" ng-model="selectRecord.endSectionName" readonly="readonly" placeholder="请选择" ng-click="showList('.fanweie')" />
+				          	<ul>
+				          		<li ng-repeat="t in selectRecord.endtime" ng-click="selectEndTime(t.timeCode,t.name)">{{t.name}}</li>
+				          	</ul>
+				          </div>
+				          <div class="clear"></div>
+			     	</td>
+			     </tr>
+			     
+			     <tr>
+			     	<th class="tableLeft">预测到：</th>
+			     	<td>
+			     		<div class="forecaste">
+			     			<input type="text" ng-model="selectRecord.forecastSectionName" readonly="readonly" placeholder="请选择" ng-click="showList('.forecaste')" />
+				          	<ul>
+				          		<li ng-repeat="t in selectRecord.pretime" ng-click="selectPreTime(t.timeCode,t.name)">{{t.name}}</li>
+				          	</ul>
+			     		</div>
+			     		<div class="zxsp">
+			     			预测区间置信水平
+			     			<input type="text" ng-model="selectRecord.fmclx" readonly="readonly" placeholder="90%" ng-click="showList('.zxsp')" />
+				          	<ul>
+				          		<li value="0.9" ng-click="selectFmcl(0.9,'90%')">90%</li>
+				          		<li value="0.95" ng-click="selectFmcl(0.95,'95%')">95%</li>
+				          		<li value="0.99" ng-click="selectFmcl(0.99,'99%')">99%</li>
+				          	</ul>
+			     		</div>
+			     		<div class="clear"></div>
+			     	</td>
+			     </tr>
+			     
+			     <tr>
+			     	<td colspan="2">
+			     		<div class="smooth-params">
+			     			<span class="s-p-bt">平滑参数：</span>
+			     			<p><label class="checkbox" ng-class="{'on':selectRecord.hasAlpha!=0}" ng-click="selectRecord.hasAlpha = !selectRecord.hasAlpha">Alpha</label><input type="text" ng-disabled="selectRecord.hasAlpha==0" ng-model="selectRecord.alpha" /></p>
+			     			<p><label class="checkbox" ng-class="{'on':selectRecord.hasBeta!=0}" ng-click="selectRecord.hasBeta = !selectRecord.hasBeta">Beta</label><input type="text" ng-disabled="selectRecord.hasBeta==0" ng-model="selectRecord.beta" /></p>
+			     			<p><label class="checkbox" ng-class="{'on':selectRecord.hasGamma!=0}" ng-click="selectRecord.hasGamma = !selectRecord.hasGamma">Gamma</label><input type="text" ng-disabled="selectRecord.hasGamma==0" ng-model="selectRecord.gamma" /></p>
+			     		</div>
+			     		
+			     		<div class="var-change">
+			     			<span class="v-c-bt">因变量转换：</span>
+			     			<span class="radio" ng-class="{'on':selectRecord.deptTrans == 'NONE'}" ng-click="selectRecord.deptTrans = 'NONE'">无</span>
+			     			<span class="radio" ng-class="{'on':selectRecord.deptTrans == 'SQRT'}" ng-click="selectRecord.deptTrans = 'SQRT'">平方根</span>
+			     			<span class="radio" ng-class="{'on':selectRecord.deptTrans == 'LOG'}" ng-click="selectRecord.deptTrans = 'LOG'">自然对数</span>
+			     		</div>
+			     		<div class="clear"></div>
+			     	</td>
+			     </tr>
+			      
+			    </tbody>
+		    </table>
+		</div>
+
+		<div class="dialog-bottom">
+		  <button class="tiny cancel" ng-click="close();">取消</button>
+		  <button class="small confirm"
+		    ng-class="{'disabled':startButton() == 0}"
+		    ng-click="expsmoothGo()">确定</button>
+		</div>
+	</div>
+</div>

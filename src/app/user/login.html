@@ -1,0 +1,37 @@
+<div class="login-container" ng-controller="LoginCtrl as lcvm">
+	<div class="login-header">登录</div>
+  
+  <form name="form">
+      	<div class="ziduans">
+      		<div class="ziduan">
+            <i class="icon icon-username"></i>
+      			<input name="name" type="text" class="input" placeholder="邮箱/手机号/用户名" ng-model="user.name">
+      		</div>
+      		
+      		<div class="ziduan">
+            <i class="icon icon-pwd"></i>
+      			<input name="pwd"  type="password" class="input" placeholder="密码" ng-model="user.password" style="margin-top:-1px;">
+	        </div>
+	        
+	        <div class="ziduan code">
+	        	<input name="var" type="text" class="input" placeholder="请输入验证码" ng-model="user.vercode" ng-class="{'error': lcvm.msg=='验证码错误'}">
+	        	<span class="refreshcode" ng-click="lcvm.upTamp()"></span>
+	        	<img style="cursor:pointer;" src="http://dps.epsnet.com.cn/code.do?tamp={{lcvm.tamp}}"   ng-click="lcvm.upTamp()">
+	        </div>
+	        
+	        <div class="forget-pass">
+	        	<span class="ip">当前IP：<b ng-bind="lcvm.logIp"></b></span><a href="http://login.epsnet.com.cn/findpwd.html?url=http://dps.epsnet.com.cn" target="_blank" style="font-size:12px;color:#5fb0fc;">忘记登录密码</a>
+	        </div>
+	        
+          <div class="login-btns">
+	        <input type="button" class="login-btn btn" ng-class="{'disabled-f': form.$invalid}" ng-click="lcvm.login(!form.$invalid)" value="登录" />
+          <span class="ip-btn btn" ng-click="lcvm.IpLogin()">校园IP</span>
+          </div>
+          <div class="other-button">
+          	<span class="apply">没有帐号？<a href="http://login.epsnet.com.cn/apply.html" target="_blank">申请试用</a></span>
+          </div>
+          
+          <p style="font-size:12px;height:14px;margin:0;line-height:.5;color:#f9a9a3;" ng-bind="lcvm.msg"></p>
+        </div>
+  </form>
+</div>

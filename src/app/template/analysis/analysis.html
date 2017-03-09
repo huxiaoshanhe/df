@@ -1,0 +1,71 @@
+<div class="analysis">
+	<div ng-controller="regressionCtrl as regr">
+		<div class="analysis-background" ng-show="regr.isShow===true"></div>
+		<regression data="regr.datas" ng-show="regr.isShow===true"></regression>
+	</div>
+
+	<div ng-controller="curvefitCtrl as cur">
+		<div class="analysis-background" ng-show="cur.isShow===true"></div>
+		<curvefit data="cur.datas" ng-show="cur.isShow===true"></curvefit>
+	</div>
+
+	<div ng-controller="leastsquaresCtrl as lea">
+		<div class="analysis-background" ng-show="lea.isShow===true"></div>
+		<leastsquares data="lea.datas" ng-show="lea.isShow===true"></leastsquares>
+	</div>
+
+	<div ng-controller="bivarCtrl as biv">
+		<div class="analysis-background" ng-show="biv.isShow===true"></div>
+		<bivar data="biv.datas" ng-show="biv.isShow===true"></bivar>
+	</div>
+
+	<div ng-controller="partialCtrl as par">
+		<div class="analysis-background" ng-show="par.isShow===true"></div>
+		<partial data="par.datas" ng-show="par.isShow===true"></partial>
+	</div>
+
+	<div ng-controller="autocorreCtrl as atc">
+		<div class="analysis-background" ng-show="atc.isShow===true"></div>
+		<autocorre data="atc.datas" ng-show="atc.isShow===true"></autocorre>
+	</div>
+
+	<div ng-controller="hpfilterCtrl as hpf">
+		<div class="analysis-background" ng-show="hpf.isShow===true"></div>
+		<hpfilter data="hpf.datas" ng-show="hpf.isShow===true"></hpfilter>
+	</div>
+
+	<div ng-controller="expsmoothCtrl as exps">
+		<div class="analysis-background" ng-show="exps.isShow===true"></div>
+		<expsmooth data="exps.datas" ng-show="exps.isShow===true"></expsmooth>
+	</div>
+
+	<div ng-controller="arimaCtrl as ari">
+		<div class="analysis-background" ng-show="ari.isShow===true"></div>
+		<arima data="ari.datas" ng-show="ari.isShow===true"></arima>
+	</div>
+
+	<div ng-controller="preanalysisCtrl as prea">
+		<div class="analysis-background" ng-show="prea.isShow===true"></div>
+		<pre-analysis data="prea.datas" ng-show="prea.isShow===true"></pre-analysis>
+	</div>
+
+	<div ng-controller="pcanalysisCtrl as pca">
+		<div class="analysis-background" ng-show="pca.isShow===true"></div>
+		<pc-analysis data="pca.datas" ng-show="pca.isShow===true"></pc-analysis>
+	</div>
+
+	<div ng-controller="factoranalysisCtrl as faca">
+		<div class="analysis-background" ng-show="faca.isShow===true"></div>
+		<factor-analysis data="faca.datas" ng-show="faca.isShow===true"></factor-analysis>
+	</div>
+
+	<div ng-controller="aggregationCtrl as agg">
+		<div class="analysis-background" ng-show="agg.isShow===true"></div>
+		<aggregation data="agg.datas" ng-show="agg.isShow===true"></aggregation>
+	</div>
+
+	<div ng-controller="calculatorCtrl as ccc">
+		<div class="analysis-background" ng-show="ccc.isShow===true"></div>
+		<calculators data="ccc.datas" ng-show="ccc.isShow===true"></calculators>
+	</div>
+</div>

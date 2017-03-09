@@ -1,0 +1,48 @@
+<div class="drawMap" ng-controller="drawMapCtrl as dmc" ng-show="dmc.show">
+        <div class="mapsIndicators">
+          <div class="deptStates">指标：</div>
+          <div class="deptLabels">
+            <div class="selects">
+              <div class="currentSelect"><span ng-bind="dmc.selectRecord.indicatorName"></span><i></i></div>
+              <ul>
+                <li ng-click="dmc.reDrawMap(d.code,'deptChange')" ng-repeat="d in dmc.dept" ng-bind="d.name"></li>
+              </ul>
+            </div>
+          </div>
+          <div class="mapClose" ng-click="dmc.close()"></div>
+          <div class="indicatorFullName" ng-bind="dmc.selectRecord.indicatorFullName"></div>
+        </div>
+
+        <map-area chart="dmc.mapData"></map-area>
+
+        <div class="mapsTimes">
+          <div class="color-select">          
+            <div class="current-color"><div class="inner-border" style="background:{{dmc.currentColor}}"></div><div class="open-more" ng-click="dmc.colorOpen=!dmc.colorOpen"></div></div>         
+            <div class="color-options" ng-class="{'open':dmc.colorOpen===true}">
+              <span class="color-demo" style="background:#fe0100" ng-click="dmc.selectColor('#fe0100')"></span>
+              <span class="color-demo" style="background:#ffff00" ng-click="dmc.selectColor('#ffff00')"></span>
+              <span class="color-demo" style="background:#ff7c00" ng-click="dmc.selectColor('#ff7c00')"></span>
+              <span class="color-demo" style="background:#7bff00" ng-click="dmc.selectColor('#7bff00')"></span>
+              <span class="color-demo" style="background:#00ff01" ng-click="dmc.selectColor('#00ff01')"></span>
+              <span class="color-demo" style="background:#ff00ff" ng-click="dmc.selectColor('#ff00ff')"></span>
+              <span class="color-demo" style="background:#ff027c" ng-click="dmc.selectColor('#ff027c')"></span>
+              <span class="color-demo" style="background:#7b01ff" ng-click="dmc.selectColor('#7b01ff')"></span>
+              <span class="color-demo" style="background:#0000ff" ng-click="dmc.selectColor('#0000ff')"></span>
+              <span class="color-demo" style="background:#00ffff" ng-click="dmc.selectColor('#00ffff')"></span>
+              <span class="color-demo" style="background:#00ff7d" ng-click="dmc.selectColor('#00ff7d')"></span>
+              <span class="color-demo" style="background:#007efe" ng-click="dmc.selectColor('#007efe')"></span>
+            </div>
+          </div>
+          <div class="timeBtns">
+            <span class="prevBtn" ng-click="dmc.timePrev()" title="上一个"></span>
+            <span class="switch" ng-class="{'on':dmc.switch===true}" ng-click="dmc.timeSwitch(dmc.switch)" title="播放/暂停"></span>
+            <span class="nextBtn" ng-click="dmc.timeNext()" title="下一个"></span>
+          </div>
+          <div class="timeLine" ng-style="dmc.timeLineStyle"></div>
+          <div class="timeList" ng-style="dmc.timeListStyle">
+            <div class="timeListInner" ng-style="dmc.timeListInnerStyle">
+              <span ng-repeat="t in dmc.times" ng-class="{'on':t.code===dmc.selectRecord.time}" ng-click="dmc.reDrawMap(t.code,'timeChange')" ng-bind="t.name"></span>
+            </div>            
+          </div>          
+        </div>
+      </div>

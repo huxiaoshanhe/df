@@ -1,0 +1,66 @@
+﻿<div class="result" style="margin: 0 auto;">
+    <div class="directory"></div>
+    <div class="result-title">
+        <h1>ARIMA分析结果</h1>
+    <span class="header-tools">
+      <i class="icon icon-r icon-r-download"></i>
+      <i class="icon icon-r icon-r-share" title="分享"
+         ng-if="arc.isShare"
+         ng-click="arc.share(arc.shareId)"></i>
+    </span>
+    </div>
+    <div ng-repeat="paragraph in arc.textResult">
+        <a ng-if="paragraph.name" id="t{{$index}}" href="#" class="mamam" data-text="{{paragraph.name}}"></a>
+        <font class="part-title" ng-bind="paragraph.name"></font>
+        <div class="part">
+            <div class="part-font"
+                 ng-repeat="key in paragraph.keys"
+                 ng-bind-html="arc.trustAsHtml(paragraph[key])"></div>
+        </div>
+    </div>
+
+    <a id="t100" href="#" class="mamam" ng-show="arc.rpaBar[0].name" data-text="残差自相关"></a>
+    <font class="part-title" ng-show="arc.rpaBar[0].name" ng-bind="arc.raBar[0].name"></font>
+    <table>
+        <tr>
+            <td>
+                <div class="part-font"
+                     ng-repeat="key in arc.raBar[0].keys"
+                     ng-bind-html="arc.trustAsHtml(arc.raBar[0][key])"
+                     style="margin-top: -18px;"></div>
+            </td>
+            <td>
+                <div class="part fn-clear" ng-show="arc.raBarChart">
+                    <span class="fn-right"><chart width="660" chart-data="arc.raBarChart"></chart></span>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div>
+
+        <a id="t101" href="#" ng-show="arc.rpaBar[0].name" class="mamam" data-text="残差偏自相关"></a>
+        <font class="part-title" ng-show="arc.rpaBar[0].name" ng-bind="arc.rpaBar[0].name"></font>
+        <table>
+            <tr>
+                <td>
+                    <div class="part-font"
+                         ng-repeat="key in arc.rpaBar[0].keys"
+                         ng-bind-html="arc.trustAsHtml(arc.rpaBar[0][key])"
+                         style="margin-top: -18px;"></div>
+                </td>
+                <td>
+                    <div class="part fn-clear" ng-show="arc.rpaBarChart">
+                        <span class="fn-right"><chart width="660" chart-data="arc.rpaBarChart"></chart></span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div ng-if="arc.lineChart">
+            <a id="c1" href="#" class="mamam" data-text="图形"></a>
+            <font class="part-title">图形</font>
+            <div class="part">
+                <chart chart-data="arc.lineChart"></chart>
+            </div>
+        </div>
+    </div>
+

@@ -1,0 +1,6 @@
+<div ng-controller="TBBGCtrl as bgc">
+  <div class="color-group" ng-repeat="cr in bgc.ary2">
+    <i class="color-block" ng-repeat="color in cr" style="background-color:{{color}};"
+      ng-click="bgc.upbg(color)"></i>
+  </div>
+</div>

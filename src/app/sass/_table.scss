@@ -1,0 +1,168 @@
+@import "global";
+// 表格布局
+
+$table-margin-top: rem-calc(10); // 外侧项单独上边距间隔
+$table-row-spacing: rem-calc(14); // 行间隔
+$table-side-padding: rem-calc(20); // 表格侧边填充
+
+$highlight-input-item-bottom: rem-calc(10); // 输入项下边距
+$highlight-content-padding-left: rem-calc(10); // 内容区内边距
+$highlight-div-margin-top: rem-calc(10);
+$highlight-div-padding:
+  $table-row-spacing
+  $table-side-padding
+  $table-row-spacing
+  $table-side-padding;
+$highlight-border-color: #d3d5d9;
+$highlight-bg-color: $white;
+
+$more-block-input-item-right: rem-calc(20);
+$more-block-font-line-color: #3b9eff;
+
+$table-fieldset-top: rem-calc(13);
+$table-fieldset-padding: 0 10px 0 19px;
+$table-fieldset-input-item-bottom: rem-calc(12);
+$table-fieldset-border-color: #d3d7d9;
+$table-fieldset-bg-color: $white;
+
+$table-fieldset-input-height: rem-calc(24);
+$table-fieldset-input-width: rem-calc(40);
+$table-fieldset-input-padding-left: rem-calc(5);
+$table-fieldset-border-color: #d3d7d9;
+$table-fieldset-input-disabled-bg-color: #f0f0f0;
+$table-fieldset-input-disabled-border-color: #d3d7d9;
+
+$result-table-padding: rem-calc(6) rem-calc(20);
+$result-table-icon-th-margin: rem-calc(-3) rem-calc(-10) 0 rem-calc(10);
+$result-table-border-color: #a4a4a5;
+$result-table-header-bg-color: #f0f0f0;
+
+$more-block-input-item-bottom: rem-calc(8);
+
+@include exports ("table") {
+
+  .result-table {
+    td, th {
+      padding: $result-table-padding;
+      border: 1px solid $result-table-border-color;
+      text-align: center;
+    }
+    th { background-color: $result-table-header-bg-color; }
+    th.icon-th {
+      .icon, .icon-btn {
+        margin: $result-table-icon-th-margin;
+        vertical-align: middle;
+        opacity: .6;
+        &:hover { opacity: 1; }
+      }
+    }
+  }
+
+  .table-grid { // 表格格子
+    th { 
+      width: 1px;
+      text-align: left;
+      white-space: nowrap;
+    }
+    th, td {
+      padding-top: $table-row-spacing;
+      padding-bottom: $table-row-spacing;
+    }
+    th:first-child { padding-left: $table-side-padding; } // 描述性文字
+    td:last-child { padding-right: $table-side-padding; } // 内容限制宽度
+
+    tr + tr { th, td { padding-top: 0; } } // 清零
+    tr.highlight, tr.highlight + tr { th, td { padding-top: $table-row-spacing; } }
+    td.table-top { padding-bottom: 0; padding-top: $table-margin-top; } // 顶部清空下内边距
+    td.table-right { padding-left: $highlight-content-padding-left; } // 右侧内容区
+
+    // 单容器
+    .table-grid-single {
+      padding-left: $table-side-padding;
+      padding-right: $table-side-padding;
+    }
+    // 全输入框
+    .expand-input {
+      padding-left: $table-side-padding;
+      padding-right: $table-side-padding;
+    }
+  }
+
+  .table-fieldset { // 表格控件组
+    display: inline-block;
+    padding: $table-fieldset-padding;
+    margin: 0;
+    border: 1px solid $table-fieldset-border-color;
+    background-color: $table-fieldset-bg-color;
+
+    .input-text {
+      display: inline-block;
+      margin-bottom: $table-fieldset-input-item-bottom;
+    }
+
+    .radio { margin-bottom: $table-fieldset-input-item-bottom - rem-calc(2); }
+    .checkbox { margin-bottom: $table-fieldset-input-item-bottom; }
+    legend { margin-bottom: $table-fieldset-top; }
+    input { // 小输入框框框
+      outline: 0;
+      height: $table-fieldset-input-height;
+      width: $table-fieldset-input-width;
+      // padding-left: $table-fieldset-input-padding-left;
+      margin-right: 20px;
+      border: 1px solid $table-fieldset-border-color;
+      text-align: center;
+
+      &.disabled, &[disabled] {
+        border-color: $table-fieldset-input-disabled-border-color;
+        background-color: $table-fieldset-input-disabled-bg-color;
+      }
+    } 
+  }
+
+  .highlight { // 高亮显示块
+    th:first-child { vertical-align: top; }
+    th, td {
+      border-top: 1px solid $highlight-border-color;
+      border-bottom: 1px solid $highlight-border-color;
+      background-color: $highlight-bg-color;
+    }
+    td.highlight-content {
+      padding-left: $highlight-content-padding-left;
+    }
+
+    .checkbox {
+      margin-bottom: $highlight-input-item-bottom;
+      &:nth-last-of-type(1) { margin-bottom: 0; }
+    }
+  }
+  div.highlight {
+    overflow: auto;
+    padding: $highlight-div-padding;
+    margin-top: $highlight-div-margin-top;
+    border-top: 1px solid $highlight-border-color;
+    border-bottom: 1px solid $highlight-border-color;
+  }
+
+  .more-block { // 扩展块
+    padding-left: $table-side-padding;
+    padding-right: $table-side-padding;
+
+    .font-line {
+      color: $more-block-font-line-color;
+      margin-bottom: $table-row-spacing;
+    }
+    .radio { margin-right: $more-block-input-item-right; }
+    .checkbox { margin-bottom: $more-block-input-item-bottom; }
+    > .checkbox:last-child { margin-bottom: 0; }
+
+    .more-row {
+      padding-top: $table-row-spacing;
+      padding-bottom: $table-row-spacing;
+
+      &.inside { padding-left: $table-side-padding; }
+    }
+    > .more-row:last-child { padding-bottom: 0; }
+    .font-line + .more-row { padding-top: 0; }
+
+  }
+}

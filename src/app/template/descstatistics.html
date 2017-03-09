@@ -1,0 +1,93 @@
+<div>
+<!-- 描述性统计 -->
+<div class="descarea">
+	<div class="win-desc-header">描述性统计
+	<div class="win-desc-tool"><i class="win-desc-icon icon-ct icon-close close" ng-controller="descCtrl as des" ng-click="des.close()"></i></div></div>
+	<table class="desc-main">
+		<tbody>
+			<tr>
+				<td class="desc-strip desc-key">
+					<ul>
+						<li class="icon-drop">取样描述
+							<ul>
+								<li>观察数目</li><li>缺失值数目</li>
+							</ul></li>
+						<li class="icon-drop">集中趋势
+							<ul>
+								<li>均值</li><li>中位数</li>
+								<li>众数</li><li>合计</li>
+							</ul></li>
+						<li class="icon-drop">离散趋势
+							<ul>
+								<li>标准差</li><li>方差</li>
+								<li>最大值</li><li>最小值</li>
+								<li>极差</li><li>半极差</li>
+								<li>均值标准误差</li><li>变异系数</li>
+							</ul></li>
+					</ul>
+				</td>
+				<td class="desc-strip">
+					<ul>
+						<li>&nbsp;
+							<ul>
+								<li>{{desc.nonEmptyStats || '&nbsp;'}}</li>
+								<li>{{desc.emptyNum || '&nbsp;'}}</li>
+							</ul></li>
+						<li>&nbsp;
+							<ul>
+								<li>{{desc.mean || '&nbsp;'}}</li>
+								<li>{{desc.median || '&nbsp;'}}</li>
+								<li>{{desc.modes || '&nbsp;'}}</li>
+								<li>{{desc.total || '&nbsp;'}}</li>
+							</ul></li>
+						<li>&nbsp;
+							<ul>
+								<li>{{desc.standardDeviation || '&nbsp;'}}</li>
+								<li>{{desc.variance || '&nbsp;'}}</li>
+								<li>{{desc.max || '&nbsp;'}}</li>
+								<li>{{desc.min || '&nbsp;'}}</li>
+								<li>{{desc.range || '&nbsp;'}}</li>
+								<li>{{desc.interquartileRange || '&nbsp;'}}</li>
+								<li>{{desc.seMean || '&nbsp;'}}</li>
+								<li>{{desc.coefficientOfVariation || '&nbsp;'}}</li>
+							</ul></li>
+					</ul>
+				</td>
+				<td class="desc-strip desc-key">
+					<ul>
+						<li class="icon-drop">百分位值
+							<ul>
+								<li>10%</li><li>25%(Q1)</li>
+								<li>75%(Q3)</li><li>90%</li>
+								
+							</ul></li>
+						<li class="icon-drop">分布
+							<ul>
+								<li>峰度</li><li>偏度</li>
+								<li>JB量计算</li>
+							</ul></li>
+					</ul>
+				</td>
+				<td class="desc-strip desc-last">
+					<ul>
+						<li>&nbsp;
+							<ul>
+								<li>{{desc.upperDecile || '&nbsp;'}}</li>
+								<li>{{desc.upperQuartile || '&nbsp;'}}</li>
+								<li>{{desc.lowerQuartile || '&nbsp;'}}</li>
+								<li>{{desc.lowerDecile || '&nbsp;'}}</li>
+							</ul></li>
+						<li>&nbsp;
+							<ul>
+								<li>{{desc.skewness || '&nbsp;'}}</li>
+								<li>{{desc.kurtosis || '&nbsp;'}}</li>
+								<li>{{desc.jarqueBera || '&nbsp;'}}</li>
+							</ul></li>
+					</ul>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</div>
+

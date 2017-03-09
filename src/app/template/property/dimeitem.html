@@ -1,0 +1,14 @@
+<!-- 显示指标项目 -->
+<div ng-controller="SideIndicatorCtrl as sicvm">
+  <div class="item" ng-show="node.checked == true"
+    ng-repeat="node in sicvm.tree.childs">
+    <span class="fn-fonthid" title="{{node.name}}">{{node.name}}</span>
+    <div class="icon-bar">
+      <i class="icon-btn icon-del"
+        ng-show="sicvm.tree.childs.length > 1"
+        ng-click="sicvm.remove(node.id)"></i>
+    </div>
+  </div>
+</div>
+
+

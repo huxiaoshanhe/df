@@ -1,0 +1,49 @@
+@import "global";
+@import "icons";
+// 伸缩列表
+
+$fiexible-maring-left: 7px;
+$fiexible-drop-width: 7px;
+
+$fiexible-item-margin-top: rem-calc(10);
+$fiexible-item-font-size: rem-calc(14);
+$fiexible-block-margin-top: rem-calc(15);
+
+$fiexible-block-font-color: #A2A3A4;;
+$fiexible-a-font-color: $black;
+
+@include exports("fiexible") {
+  .fiexible {
+    ul { padding: 0; margin: 0; }
+    li {
+      padding: 0 0 0 ($fiexible-maring-left + $fiexible-drop-width);
+      margin-top: $fiexible-item-margin-top;
+      font-size: $fiexible-item-font-size;
+      list-style: none;
+
+      &.fiex-open, &.fiex-close {
+        position: relative;
+        > span {
+          width: 100%;
+          display: inline-block;
+          color: $fiexible-block-font-color;
+          cursor: pointer;
+        }
+      }
+      &.fiex-open::before, &.fiex-close::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 9px;
+        display: inline-block;
+        @extend .icon-arrow;
+      }
+      &.fiex-close::before { @include rotate2d(-90deg); }
+
+      > a {
+        font-size: 16px;
+        text-decoration: none;
+        color: $fiexible-a-font-color;
+      }
+    }
+  }
+}

@@ -1,0 +1,116 @@
+@import "global";
+
+// 对话框定义
+// 对话盒子模型
+$dialog-min-width: rem-calc(422);
+$dialog-padding-left: rem-calc(20);
+$dialog-header-height: rem-calc(42);
+$dialog-content-padding-top: rem-calc(15); // 单个元素上边距
+$dialog-content-padding-bottom: rem-calc(30);
+$dialog-bottom-height: rem-calc(50);
+$dialog-bottom-button-spacing: rem-calc(6);
+
+$dialog-border-radius: 4px;
+
+// 颜色定义
+$dialog-border-color: #646464;
+$dialog-bg-color: #fafafa;
+$dialog-header-border-color: #a3a4a5;
+$dialog-bottom-bg-color: #f0f0f0;
+$dialog-more-font-line-color: #3b9eff;
+
+// 字体定义
+$dialog-header-font-size: 16px;
+$dialog-font-size: 12px;
+
+$dialog-box-shadow: 0px 2px 10px 0 rgba(0, 0, 0, .6);
+$dialog-z-index: 501;
+
+@include exports("ngdialog") {
+
+  .dialog-header {
+    height: $dialog-header-height;
+    padding: 0 $dialog-padding-left 0 $dialog-padding-left;
+    border-bottom: 1px solid $dialog-header-border-color;
+    line-height: $dialog-header-height;
+
+    .icon-bar {
+      display: inline-block;
+      height: $dialog-header-height;
+      vertical-align: top;
+      float: right;
+      line-height: $dialog-header-height;
+    }
+  }
+
+  .dialog-content {
+    line-height: 1;
+    padding-bottom: $dialog-content-padding-bottom;
+    > table {
+      width: 100%;
+    }
+    em {
+      font-style: normal;
+      color: #FF5C54;
+    }
+  }
+
+  .dialog-bottom {
+    height: $dialog-bottom-height;
+    padding: 0 $dialog-padding-left 0 $dialog-padding-left;
+    text-align: right;
+    line-height: $dialog-bottom-height;
+    background-color: $dialog-bottom-bg-color;
+
+    & > button, & > .button { margin-left: $dialog-bottom-button-spacing; }
+  }
+
+  // ngdialog 覆盖
+  .ngdialog.ngdialog-theme-default {
+    padding-top: 87px;
+    padding-bottom: 0;
+  }
+  .ngdialog-overlay {
+    // background-color: rgba(202, 232, 254, 0.25);
+    background-color: rgba(163, 164, 165, 0.2);
+  }
+  .ngdialog.ngdialog-theme-default .ngdialog-content {
+    padding: 0;
+    width: $dialog-min-width;
+    border: 1px solid $dialog-border-color;
+    background-color: #fafafa;
+    box-shadow: $dialog-box-shadow;
+    font-family: \5fae\8f6f\96c5\9ed1, tahoma;
+    font-size: 14px;
+    @extend .nonesel;
+  }
+  .ngdialog.ngdialog-theme-default .ngdialog-close:before {
+    top: 6px;
+    right: 6px;
+  }
+
+  .ngDialog-login-theme .ngdialog-content {
+    position: relative;
+    width: 327px;
+    height: 282px;
+    margin: 128px auto 0;
+    z-index: 1;
+    border-radius: 4px;
+  }
+
+  .ngDialog-login-theme .ngdialog-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    &::before {
+      display: inline-block;
+      padding-left: 3px;
+      width: 15px;
+      height: 15px;
+      line-height: 15px;
+      border-radius: 30px;
+      color: #666;
+    }
+  }
+}

@@ -1,0 +1,72 @@
+<div class="dialog-header">
+  添加指标
+  <span class="icon-bar">
+    <i class="icon remove"></i>
+  </span>
+</div>
+<div class="dialog-content" style="padding-bottom:0;">
+  <table class="table-grid"><tbody>
+    <tr><td class="table-top" colspan="2"></td></tr>
+    <tr><td colspan="2" style="padding:0;">
+      <input class="expand-input" ng-model="keyword" type="text" placeholder="请输入关键字">
+    </td></tr>
+    <tr><td colspan="2" style="padding:0;">
+      <div class="highlight" style="height:276px;width:420px;">
+        <scrollbar>
+         <div ng-repeat="indic in aivm.searchList" style="line-height:1.4;"
+              ng-if="aivm.searchList.length">
+           <label class="checkbox break fn-fonthid"
+             ng-class="{'selected':aivm.selected[indic.indicatorCode]}"
+             ng-click="aivm.selected[indic.indicatorCode]=!aivm.selected[indic.indicatorCode]"
+             ng-bind-html="indic.indicatorName|kwf:keyword"></label>
+         </div>
+         <div ng-if="!aivm.searchList.length"style="text-align:center; color:rgb(215,216,218);">
+           <h3>没有找到相关的指标~</h3>
+         </div>
+        </scrollbar>
+      </div>
+    </td></tr>
+  </tbody></table>
+</div>
+<div class="dialog-bottom">
+  <button class="tiny cancel" ng-click="closeThisDialog();">取消</button>
+  <button class="small confirm"
+    ng-class="{'disabled':aivm.disabled}"
+    ng-click="aivm.addIndicator();">添加</button>
+</div>
+<!-- <div class="dialog-header">
+  添加指标
+  <span class="icon-bar">
+    <i class="icon remove"></i>
+  </span>
+</div>
+<div class="dialog-content" style="padding-bottom:0;">
+  <table class="table-grid"><tbody>
+    <tr><td class="table-top" colspan="2"></td></tr>
+    <tr><td colspan="2" style="padding:0;">
+      <input class="expand-input" ng-model="keyword" type="text" placeholder="请输入关键字" value="">
+    </td></tr>
+    <tr><td colspan="2" style="padding:0;">
+      <div class="highlight" style="height:276px;width:420px;">
+        <scrollbar>
+          <div ng-repeat="indic in aivm.searchList" style="line-height:1.4;"
+               ng-if="aivm.searchList.length">
+            <label class="checkbox break fn-fonthid"
+              ng-class="{'selected':aivm.selected[indic.indicatorCode]}"
+              ng-click="aivm.selected[indic.indicatorCode]=!aivm.selected[indic.indicatorCode]"
+              ng-bind-html="indic.indicatorName|kwf:keyword"></label>
+          </div>
+          <div ng-if="!aivm.searchList.length"style="text-align:center; color:rgb(215,216,218);">
+            <h3>没有找到相关的指标~</h3>
+          </div>
+        </scrollbar>
+      </div>
+    </td></tr>
+  </tbody></table>
+</div>
+<div class="dialog-bottom">
+  <button class="tiny cancel" ng-click="closeThisDialog();">取消</button>
+  <button class="small confirm"
+    ng-class="{'disabled':aivm.disabled}"
+    ng-click="aivm.addIndicator();">添加</button>
+</div> -->

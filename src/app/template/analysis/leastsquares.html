@@ -1,0 +1,58 @@
+<div class="analysis-dialog">
+	<div class="dialog-inner">
+		<div class="dialog-header">
+		二阶段最小二乘法
+		  <span class="icon-bar">
+		    <i class="icon remove" ng-click="close()"></i>
+		  </span>
+		</div>
+
+		<div class="dialog-content returnback leastsquares" style="padding-bottom:0;">
+		  <table style="width: 100%;">
+			  <tbody>
+			      <tr>
+			        <th class="tableLeft">因变量：</th>
+			        <td>
+			          <div class="ybl">
+			          	<div class="nowYbl" ng-click="showList('.ybl',event)">{{selectRecord.deptname}}<em class="ico-down"></em></div>
+			          	<ul>
+			          		<li ng-repeat="dept in data.deptVars" ng-click="selectDept(dept.index,dept.name)">{{dept.name}}</li>
+			          	</ul>
+			          </div>
+			        </td>
+			      </tr>
+			      <tr class="attention">
+			        <th class="tableLeft">解释变量：</th>
+			        <td style="padding:0;">
+			          <div class="zbl">
+			          	 <label class="checkbox" ng-repeat="exp in data.indeptVars" ng-class="{'on': selectRecord.expIndexs.indexOf(exp.index)!==-1 }" ng-click="selectexpIndexs(exp.index)">{{exp.name}}</label>
+			          </div>
+			        </td>
+			      </tr>
+			      <tr class="attention">
+			        <th class="tableLeft">工具变量：</th>
+			        <td style="padding:0;">
+			          <div class="zbl">
+			          	 <label class="checkbox" ng-repeat="ctrl in data.indeptVars" ng-class="{'on': selectRecord.ctrlIndexs.indexOf(ctrl.index)!==-1 }" ng-click="selectctrlIndexs(ctrl.index)">{{ctrl.name}}</label>
+			          </div>
+			        </td>
+			      </tr>
+			      <tr class="attention">
+			      	<td colspan="2">
+			      		<div class="zbl" style="height:30px;margin:0 0 0 10px;">
+			      			<label class="checkbox" ng-class="{'on':selectRecord.consts!=0}" ng-click="selectedConst()">在等式中包含常量</label>
+			      		</div>
+			      	</td>
+			      </tr>
+			    </tbody>
+		    </table>
+		</div>
+
+		<div class="dialog-bottom">
+		  <button class="tiny cancel" ng-click="close();">取消</button>
+		  <button class="small confirm"
+		    ng-class="{'disabled':startButton() == 0}"
+		    ng-click="leastsquaresGo()">确定</button>
+		</div>
+	</div>
+</div>

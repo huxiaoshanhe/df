@@ -1,0 +1,9 @@
+.sub_page{width:917px;padding-bottom:60px;}
+.sub_page h2{margin-bottom:15px;font-size:18px;color:#444444;margin-top:15px;}
+.sub_page h2.blue {color:#5BA6F9;}
+.sub_page h4{margin-bottom:15px;font-size:12px;color:#444444;margin-top:15px;}
+.sub_page p{margin-bottom:15px;font-size:14px;color:#595959;line-height:26px;margin-top:15px;text-indent:28px;}
+.sub_page img{display:block;margin-top:5px;margin-bottom:5px;margin-left: auto;margin-right:auto;}
+.sub_page a{color:blue;text-decoration: underline;}
+.sub_page .other {border-top:1px solid #999;padding:20px 0 0 0;margin:20px 0 0 0;line-height:20px;}
+.sub_page .other p{font-size:12px;margin-top:0;}

@@ -1,0 +1,5 @@
+<div style="line-height:0;width:78px;" ng-controller="TBAlignCtrl as ac">
+  <span class="icon icon-{{(align=='center'?'middle':align)}}"
+    style="margin:0 3px;cursor:pointer"
+    ng-repeat="align in ac.ary" ng-click="ac.upalign(align)"></span>
+</div>

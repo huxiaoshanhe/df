@@ -1,0 +1,19 @@
+<div>
+	<div class="title-main">指标查看历史</div>
+	<div class="data-list keywords">
+		<table>
+			<tr>
+				<th class="th1"><span class="checkbox"><em></em></span></th>
+				<th class="th2">名称</th>
+				<th class="th3 text-center">创建日期</th>
+				<th class="th5 text-center">操作</th>
+			</tr>			
+			<tr ng-repeat="i in ihc.lists">
+				<td><span class="checkbox"><em></em></span></td>
+				<td><span class="title"><em ng-bind="i.eventName"></em></span></td>
+				<td class="text-center"><em ng-bind="i.addTime"></em></td>
+				<td class="text-center control"><span class="fa fa-trash" ng-click="ihc.delete(i.id)"></span></td>
+			</tr>
+		</table>
+	</div>
+</div>

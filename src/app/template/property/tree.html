@@ -1,0 +1,7 @@
+<div ng-controller="LeftTreeCtrl as ltcvm">
+  <ztree class="ztree acc-c-container" style="margin-left:-5px;"
+    mark="{{ltcvm.id}}"
+    data="ltcvm.root.childs"
+    statusKey="{{scvm.sheet.id}}"
+    oncheck="ltcvm.checkNode"></ztree>
+</div>

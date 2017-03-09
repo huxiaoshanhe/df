@@ -1,0 +1,32 @@
+<div>
+	<div class="tools">
+		<span ng-click="mdc.goBack()"><em>后退</em></span>
+		<span ng-click="mdc.isShow=1"><em>新建文件夹</em></span>
+		<span ng-click="mdc.rename()"><em>重命名</em></span>
+		<!-- <span class="fa fa-sign-out" ng-click="mdc.move()"><em>移动</em></span>
+		<span class="fa fa-paste disabled" ng-click="mdc.paste()"><em>粘贴</em></span> -->
+		<span ng-click="mdc.delete()"><em>删除</em></span>
+	</div>
+	<div class="data-list">
+		<table>
+			<tr>
+				<th class="th1"><span class="checkbox" ng-click="mdc.selectAll()" ng-class="{'checked':mdc.selectedFiles.length===mdc.folders.length}"><em></em></span></th>
+				<th class="th2">名称</th>
+				<th class="th3 text-center">来源</th>
+				<th class="th4 text-center">创建日期</th>
+				<th class="th5 text-center">文件大小</th>
+			</tr>
+			<tr ng-repeat="f in mdc.folders|orderBy:order" ng-class="{'on':mdc.selectedFiles.indexOf(f.cude_id)!==-1}">
+				<td><span class="checkbox" ng-click="mdc.checkFiles(f.cude_id)" ng-class="{'checked':mdc.selectedFiles.indexOf(f.cude_id)!==-1}"><em></em></span></td>
+				<td><span class="title glyphicon glyphicon-folder-close" ng-class="{'glyphicon-file':f.is_file==1}" ng-dblclick="mdc.getFolders(f.cude_id, f.is_file,f.indictorCodeStr)" ng-click="mdc.selectFile(f.cude_id)"><em ng-bind="f.file_name"></em></span></td>
+				<td class="text-center">收藏</td>
+				<td class="text-center" ng-bind="f.addTime"></td>
+				<td class="text-center">12K</td>
+			</tr>
+		</table>
+		<div class="newFolder" ng-class="{'show':mdc.isShow===1}">
+			<input type="text" ng-model="mdc.folderName" />
+			<button class="btn btn-info" ng-click="mdc.newFolder()">提交</button>
+		</div>
+	</div>
+</div>

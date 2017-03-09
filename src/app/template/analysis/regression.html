@@ -1,0 +1,99 @@
+<div class="analysis-dialog">
+	<div class="dialog-inner">
+		<div class="dialog-header">
+		 线性回归
+		  <span class="icon-bar">
+		    <i class="icon remove" ng-click="close()"></i>
+		  </span>
+		</div>
+
+		<div class="dialog-content returnback" style="padding-bottom:0;">
+		  <table style="width: 100%;">
+			  <tbody>
+			      <tr>
+			        <th class="tableLeft">因变量：</th>
+			        <td>
+			          <div class="ybl">
+			          	<div class="nowYbl" ng-click="showList('.ybl',event)">{{selectRecord.deptname}}<em class="ico-down"></em></div>
+			          	<ul>
+			          		<li ng-repeat="dept in data.deptVars" value="{{dept.index}}" ng-click="selectDept(dept.index,dept.name)">{{dept.name}}</li>
+			          	</ul>
+			          </div>
+			        </td>
+			      </tr>
+			      <tr class="attention">
+			        <th class="tableLeft">自变量：</th>
+			        <td style="padding:0;">
+			          <div class="zbl">
+			          	 <label class="checkbox" ng-repeat="indept in data.indeptVars" value="{{indept.index}}" ng-class="{'on': selectRecord.indept.indexOf(indept.index)!==-1 }" ng-click="selectIndept(indept.index)">{{indept.name}}</label>
+			          </div>
+			        </td>
+			      </tr>
+			      <tr>
+			        <th class="tableLeft">选择方法：</th>
+			        <td>
+			        	<div class="select-ways">
+				          	<input type="text" ng-model="selectRecord.methodName" readonly="readonly" placeholder="请选择" ng-click="showList('.select-ways',event)" />
+				          	<ul>
+				          		<li ng-repeat="way in data.methods" value="{{way.methodId}}" ng-click="selectMethod(way.methodId,way.methodName)">{{way.methodName}}</li>
+				          	</ul>
+				          </div>
+			        </td>
+			      </tr>
+			      <tr>
+			      	<td colspan="2">
+			      		<div class="params-set">
+			      			<div class="line"></div>
+			      			<span class="params-bt" ng-click="showParams()">参数设置</span>
+			      			<div class="params-set-contents">
+				      			<div class="routine">常规项：
+					      			<span class="radio" ng-class="{'on':selectRecord.consts==1}" ng-click="selectRecord.consts=1">默认</span>
+					      			<span class="radio" ng-class="{'on':selectRecord.consts==0}" ng-click="selectRecord.consts=0">无</span>
+				      			</div>
+				      			<div class="save-items">
+				      				<span>保存项：</span>
+				      				<p><label class="checkbox" ng-class="{'on':selectRecord.savingitems.indexOf('stdfitvalue')!==-1}" ng-click="savingItems('stdfitvalue')">标准化预测值</label></p>
+				      				<p><label class="checkbox" ng-class="{'on':selectRecord.savingitems.indexOf('stdfiterr')!==-1}" ng-click="savingItems('stdfiterr')">标准化残差</label></p>
+				      				<div class="ycqj">
+					      				<label class="checkbox" ng-class="{'on':selectRecord.savingitems.indexOf('fci')!==-1}" ng-click="savingItems('fci')">预测区间置信水平</label>
+						      			<div class="zxsp">
+						      				<input type="text" ng-model="selectRecord.fmclx" readonly="readonly" placeholder="90%" ng-click="showList('.save-items .zxsp')" />
+								          	<ul>
+								          		<li value="0.9" ng-click="selectFmcl(0.9,'90%','fmcl')">90%</li>
+								          		<li value="0.95" ng-click="selectFmcl(0.95,'95%','fmcl')">95%</li>
+								          		<li value="0.99" ng-click="selectFmcl(0.99,'99%','fmcl')">99%</li>
+								          	</ul>
+					      				</div>
+				      				</div>
+				      			</div>
+				      			<div class="system-items">
+				      				<span>系统项：</span>
+				      				<div class="zxsp">
+					      				回归分析置信水平
+					      				<input type="text" ng-model="selectRecord.rcclx" readonly="readonly" placeholder="90%" ng-click="showList('.system-items .zxsp')" />
+							          	<ul>
+							          		<li value="0.9" ng-click="selectFmcl(0.9,'90%','rccl')">90%</li>
+							          		<li value="0.95" ng-click="selectFmcl(0.95,'95%','rccl')">95%</li>
+							          		<li value="0.99" ng-click="selectFmcl(0.99,'99%','rccl')">99%</li>
+							          	</ul>
+				      				</div>
+				      				<p><label class="checkbox" ng-class="{'on':selectRecord.coefitems.indexOf('cm')!==-1}" ng-click="coefItems('cm')">协方差矩阵</label></p>
+				      				<p><label class="checkbox" ng-class="{'on':selectRecord.coefitems.indexOf('cd')!==-1}" ng-click="coefItems('cd')">共线性诊断</label></p>
+				      			</div>
+				      			<div class="clear"></div>
+			      			</div>
+			      		</div>
+			      	</td>
+			      </tr>
+			    </tbody>
+		    </table>
+		</div>
+		
+		<div class="dialog-bottom">
+		  <button class="tiny cancel" ng-click="close();">取消</button>
+		  <button class="small confirm"
+		    ng-class="{'disabled':startButton() == 0}"
+		    ng-click="regressionGo()">确定</button>
+		</div>
+	</div>
+</div>

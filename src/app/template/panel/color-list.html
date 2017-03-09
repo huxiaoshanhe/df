@@ -1,0 +1,7 @@
+<div ng-controller="TBColorCtrl as cc">
+  <div class="color-group" ng-repeat="cr in cc.ary2">
+    <i class="color-block" ng-repeat="color in cr" style="background-color:{{color}};"
+      ng-click="cc.upcolor(color)"></i>
+  </div>
+  <button class="custom-btn">自定义</button>
+</div>

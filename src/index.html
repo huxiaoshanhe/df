@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ch" ng-app="pf" style="overflow:hidden;">
+<head ng-controller="HeadCtrl as head">
+  <meta charset="UTF-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="edge">
+
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
+  <link rel="stylesheet" href="app/vendor.css">
+  <!-- bower:css -->
+  <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:css({.tmp/serve,src}) styles/app.css -->
+  <!-- inject:css -->
+  <!-- css files will be automatically insert here -->
+  <!-- endinject -->
+  <!-- endbuild -->
+
+  <title ng-bind="head.title">EPS知识服务平台</title>
+</head>
+<body>
+
+<!--[if IE 9]>
+      <script src="//cdn.rawgit.com/jpillora/xdomain/0.7.3/dist/xdomain.min.js" slave="http://localhost:5323/proxy.html"></script>
+      <script type="text/javascript">
+      		function setcookie(name,value){   
+		        document.cookie = name + "="+ escape (value);  
+		    }
+		
+		    function getcookie(name){  
+		        var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));  
+		        if(arr != null){  
+		            return (arr[2]);  
+		        }else{  
+		            return "";  
+		        }  
+		    }
+		    
+	      	function tipsClose() {
+	      		setcookie('closeTip',1);
+		    	var tips=document.getElementById('tips_ie9');
+			    tips.style.display='none';
+		    }
+		    function tipsShow() {
+		    	var tips=document.getElementById('tips_ie9');
+			    tips.style.display='block';	
+		    }
+		    window.onload=function() {
+		    	if(getcookie('closeTip')!=1) {
+		    		tipsShow();
+		    	}   	
+		    }
+      </script>
+      <div id="tips_ie9">
+	  	<h3><span>温馨提示<a>——关闭后将不再显示</a></span><em onclick="tipsClose()"></em></h3>
+	  	<p>您使用的是IE9浏览器，请进行如下设置：<span class="red">设置(Alt+x)→Internet选项→浏览历史记录设置→选择“每次访问网页时(E)”</span>。
+		若要获得更好的用户体验，请使用火狐、谷歌、360极速模式或IE10及以上版本的浏览器。</p>
+	  </div>
+  <![endif]-->
+
+  <!--[if lt IE 9]>
+      <script>
+      	  function tipsClose() {
+		    	var tips=document.getElementById('tips_ie9');
+			    tips.style.display='none';
+		  }
+	      function tipsShow() {
+		    	var tips=document.getElementById('tips_ie9');
+			    tips.style.display='block';	
+			    tips.childNodes.item(1).style.color='red';
+			    tips.childNodes.item(1).style.lineHeight='30px';
+		  }
+		  window.onload=function() {
+		    	tipsShow();
+		  }
+      </script>
+      <div id="tips_ie9">
+	  	<h3><span>温馨提示</span><em onclick="tipsClose()"></em></h3>
+	  	<p>您使用的是过时的浏览器。请使用火狐、谷歌、360浏览器极速模式或IE9以上版本的浏览器，以提高你浏览体验。</p>
+	  </div>
+  <![endif]-->
+	
+  <ui-view ng-controller="WorkBookCtrl as wb"></ui-view>
+  <rightmenu></rightmenu>
+  <panel></panel>  
+  <mydatabase></mydatabase>  
+  <search></search>
+  <descstatistics></descstatistics>
+  
+<!--   <div style="width:200px;height:100px;overflow:auto;position: relative;">
+  <div id="basic_example"></div>
+</div> -->
+
+  <!-- build:js(src) scripts/vendor.js -->
+  <!-- bower:js -->
+  <!-- run `gulp inject` to automatically populate bower script dependencies -->
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
+  <!-- inject:js -->
+  <!-- js files will be automatically insert here -->
+  <!-- endinject -->
+
+  <!-- inject:partials -->
+  <!-- angular templates will be automatically converted in js and inserted here -->
+  <!-- endinject -->
+  <!-- endbuild -->
+	
+	
+</body>
+</html>

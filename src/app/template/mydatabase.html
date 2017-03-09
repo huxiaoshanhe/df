@@ -1,0 +1,244 @@
+<div ng-controller="myDatabase as mdb">
+	<div class="upload-win window" id="upload-win">
+		<div class="b-title">
+			<span class="close"></span>
+		</div>
+		<div class="btn-area"></div>
+		<div class="statement">从我的电脑上选择需要上传的文件</div>
+		<div class="point-tips">
+			<h3>温馨提示：</h3>
+			<p>(1)上传文件格式当前支持.xls、.xlsx;</p>
+			<p>(2)由用户指定序列频度，目前支持上传月粒度、季节粒度、年粒度的时间序列数据（暂不支持截面数据上传）；</p>
+			<p>(3)由用户指定时间起点，系统默认为上传的都是连续时间序列；</p>
+			<p>(4)由用户指定地区，时间序列仅支持单个地区的解析；</p>
+			<p>(5)时间序列上传时，时间在行上，指标在列上；</p>
+			<p>(6)用数据模板上传数据时，将说明文字删除。</p>
+		</div>
+	</div>
+	
+	<div class="shade"></div>
+	<div class="select-file-type window" id="select-file-type">
+		<div class="b-title">
+			<span class="close"></span>
+			生成条件
+		</div>
+		<div class="type-list">
+			<label class="radio" value="time" id="time">时间序列</label>
+			<label class="radio" value="jiemian" id="jiemian" ng-click="mdb.uploadJm()">截面</label>
+		</div>
+	</div>
+	
+	
+	<div class="xls-tab window" id="xls-tab-sj">
+		<div class="b-title">
+			<span class="close"></span>
+			数据导入<span class="size12">（时间序列）</span>
+		</div>
+		<dl class="freq">
+			<dt>频度</dt>
+			<dd>
+				<input type="text" readonly="readonly" ng-model="freqType" placeholder="请选择" />
+				<ul>
+					<li value="01">年</li>
+					<li value="02">季</li>
+					<li value="03">月</li>
+				</ul>
+			</dd>
+			<dd>
+				<input type="text" readonly="readonly" ng-model="year" placeholder="2000" ng-click="mdb.getYears()" /><span>年</span>
+				<ul>
+					<li ng-repeat="ye in mdb.years|orderBy: 'id'" ng-click="mdb.selectYear(ye.id,ye.name)">{{ye.name}}</li>
+				</ul>
+			</dd>
+			<dd>
+				<input type="text" readonly="readonly" placeholder="第一" /><span>季度</span>
+				<ul>
+					<li value="01">第一</li>
+					<li value="04">第二</li>
+					<li value="07">第三</li>
+					<li value="10">第四</li>
+				</ul>
+			</dd>
+			<dd>
+				<input type="text" readonly="readonly" placeholder="1" /><span>月</span>
+				<ul>
+					<li value="01">01</li>
+					<li value="02">02</li>
+					<li value="03">03</li>
+					<li value="04">04</li>
+					<li value="05">05</li>
+					<li value="06">06</li>
+					<li value="07">07</li>
+					<li value="08">08</li>
+					<li value="09">09</li>
+					<li value="10">10</li>
+					<li value="11">11</li>
+					<li value="12">12</li>
+				</ul>
+			</dd>
+		</dl>
+		<div class="clear"></div>
+		<div class="region">
+			<div class="label">地区</div>
+			<div class="countries">
+		        <span>请选择国家</span>
+		        <div class="country-drop">
+		            <ul>
+		                <li><a href="javascript:;">中国</a></li>
+		            </ul>
+		        </div>
+		    </div>
+		    <div class="detail">
+		        <div class="detail-1"><span>请选择省市区</span>
+		            <a>北京</a><a>/北京</a><a>/北京</a>
+		        </div>
+		        <div class="detail-drop">
+		            <div class="classify">
+		                <span class="l-first selected">省份</span>
+		                <span>城市</span>
+		                <span>县区</span>		
+		                <!--board1-->
+		                <div class="select-board">
+		                    <dl>
+		                        <dd>
+		                            <a ng-repeat="pro in mdb.regions.province" ng-click="mdb.getCity(pro.id,pro.name)">{{pro.name}}</a>
+		                        </dd>
+		                    </dl>		              
+		                </div>
+		                <!--board2-->
+		                <div class="select-board" style="display:none;">
+		                    <dl>
+		                        <dd class="dd2">
+		                            <a ng-repeat="ct in mdb.regions.city" ng-click="mdb.getCounty(ct.id,ct.name)">{{ct.name}}</a>
+		                        </dd>
+		                    </dl>
+		                </div>
+		                <!--board3-->
+		                <div class="select-board" style="display:none;">
+		                    <dl>
+		                        <dd class="dd2">
+		                             <a ng-repeat="cty in mdb.regions.county" ng-click="mdb.selectCounty(cty.id,cty.name)">{{cty.name}}</a>
+		                        </dd>
+		                    </dl>
+		                </div>		
+		            </div>
+		        </div>
+		    </div>
+		    <div class="clear"></div>
+		</div>
+		
+		<div class="tab-area">
+			<div class="tab-up">*选择数据开始位置，可以通过鼠标或键盘方向键选择<!-- <img ng-click="mdb.goUp()" class="arrow-up" src="../../assets/images/arrow-up-icon.png" /> --></div>
+			<div class="tab-left"><!-- <img ng-click="mdb.goLeft()" class="arrow-left" src="../../assets/images/arrow-left-icon.png" /> --></div>
+			<div class="table" id="example1">
+				
+			</div>
+			<div class="tab-right"><!-- <img ng-click="mdb.goRight()" class="arrow-right" src="../../assets/images/arrow-right-icon.png" /> --></div>
+			<div class="clear"></div>
+			<div class="tab-down"><!-- <img ng-click="mdb.goDown()" class="arrow-down" src="../../assets/images/arrow-down-icon.png" /> --></div>			
+		</div>
+		<div class="btns"><button class="cancel">取消</button><button class="confirm" ng-click="mdb.toParse('sj')">解析表格</button></div>
+	</div>
+	
+	<div class="xls-tab window" id="xls-tab-jm">
+		<div class="b-title">
+			<span class="close"></span>
+			数据导入<span class="size12">（界面）</span>
+		</div>
+		<dl class="freq">
+			<dt>频度</dt>
+			<dd>
+				<select class="fre_field1">
+					<option value="year">年</option>
+					<option value="season">季</option>
+				</select>
+			</dd>
+			<dd>
+				<select class="fre_field2">
+					<option>2015</option>
+					<option>2014</option>
+				</select>
+				<span class="fre_field2_unit">年</span>
+			</dd>
+			<dd>
+				<select class="fre_field3">
+					<option>第1季度</option>
+				</select>
+			</dd>
+			<dd>
+				<select class="fre_field4">
+					<option>1</option>
+				</select>
+				月
+			</dd>
+		</dl>
+		
+		<div class="tab-area">
+			<div class="tab-up"><img class="arrow-up" src="../../assets/images/arrow-up-icon.png" /></div>
+			<div class="tab-left"><img class="arrow-left" src="../../assets/images/arrow-left-icon.png" /></div>
+			<div class="table" id="example2">
+				
+			</div>
+			<div class="tab-right"><img class="arrow-right" src="../../assets/images/arrow-right-icon.png" /></div>
+			<div class="clear"></div>
+			<div class="tab-down"><img class="arrow-down" src="../../assets/images/arrow-down-icon.png" /></div>			
+		</div>
+		<div class="btns"><button class="cancel">取消</button><button class="confirm">解析表格</button></div>
+	</div>
+	
+	
+	
+	
+	<div class="save-data window" id="save-data">
+		<div class="b-title">
+			<span class="close"></span>
+			解析成功
+		</div>
+		<div class="s-d-c">
+			<dl>
+				<dd><span>名　称：</span><input type="text" class="txt" ng-model="mdb.saveRecord.filename" /></dd>
+				<dd>
+					<span>分　类：</span><input type="text" class="select" ng-model="mdb.saveRecord.className" placeholder="选择分类" readonly="readonly" ng-click="mdb.getCates()" />
+					<ul class="cate-list" ng-show="mdb.isShowCateList">
+						<li ng-repeat="li in mdb.databaseCates" ng-click="mdb.selectCate(li.id,li.name)">{{li.name}}</li>
+					</ul>
+				</dd>
+				<dd>
+					<span>标　签：</span><input type="text" class="txt" ng-model="mdb.saveRecord.keyword" ng-change="mdb.getLabels()" />
+					<ul class="label-list">
+						<li ng-repeat="li in mdb.labels" ng-click="mdb.selectLabel(li.tagId,li.tagName)">{{li.tagName}}</li>
+					</ul>
+				</dd>
+				<dd>
+					<span>保存至：</span><input type="text" class="select" ng-model="mdb.saveRecord.parentfileName" placeholder="我的数据库" readonly="readonly" ng-click="showMyFolders=!showMyFolders" />
+					<!-- <ul class="file-list" style="left:81px;" ng-show="mdb.isShowFileList">
+						<li ng-repeat="li in mdb.ihasfiles" ng-click="mdb.selectMyfile(li.cude_id,li.file_name)">{{li.file_name}}</li>
+					</ul> -->
+					<ul id="myFolders" ng-show="showMyFolders"></ul>
+				</dd>
+			</dl>
+			<div class="btns"><button class="cancel">取消</button><button class="save" ng-class="{'disabled':mdb.startSaveButton()===false}" ng-click="mdb.toSave()">保存</button></div>
+		</div>
+	</div>
+	
+	<div class="analysis-failed window" id="analysis-failed">
+		<div class="b-title">
+			<span class="close"></span>
+			解析失败
+		</div>
+		<div class="a-f-c">
+			<h3>失败原因</h3>
+			<p>(1)目前支持上传日粒度和周粒度的时序数据，文件格式为文本文件（.txt后缀）</p>
+			<p>(2)文件分两列，第一列是日期，第二列是数据值，中间用tab分隔（从Excel表格将数据复制到文本文件，直接就是tab分隔）；一个日期对应一个数据，多个数据请拆分成多个文件。</p>
+			<div class="down-case">下载样例：<a href="template/excel/jm.xlsx">样例一</a><a href="javascript:;" style="display:none;">样例二</a></div>
+			<div class="btns"><button ng-click="mdb.reAnalysis()">重新解析</button></div>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+  	
+</div>

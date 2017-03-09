@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+  <meta charset="UTF-8">
+  <title>代理登陆</title>
+</head>
+<body>
+  <form action="http://127.0.0.1:5323/platform/login.do" method="post" style="margin: auto;width:200px;">
+    <table>
+      <tbody>
+        <tr><td><img style="display:inline-block;width:100%;" src="http://127.0.0.1:5323/platform/code.do" onclick="this.src='http://127.0.0.1:5323/platform/code.do?tamp=' + new Date().getTime();"></td></tr>
+        <tr><td><input type="text" name="passName" value="admin@qq.com"></td></tr>
+        <tr><td><input type="password" name="password" value="123456"></td></tr>
+        <tr><td><input type="text" name="verifyCode" value=""></td></tr>
+        <tr><td><button style="display:inline-block;width:100%;">登陆</button></td></tr>
+      </tbody>
+    </table>
+  </form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿
+<!-- 曲线估计 -->
+<div class="result" style="margin: 0 auto;">
+    <div class="directory"></div>
+    <div class="result-title">
+        <h1>曲线估计分析结果</h1>
+    <span class="header-tools">
+      <i class="icon icon-r icon-r-download"></i>
+      <i class="icon icon-r icon-r-share" title="分享"
+         ng-if="crc.isShare"
+         ng-click="crc.share(crc.shareId)"></i>
+    </span>
+    </div>
+    <div ng-repeat="paragraph in crc.textResult">
+        <a ng-if="paragraph.name" id="t{{$index}}" href="#" class="mamam" data-text="{{paragraph.name}}"></a>
+        <font class="part-title" ng-bind="paragraph.name"></font>
+        <div class="part">
+            <div class="part-font"
+                 style="margin-bottom: 15px;"
+                 ng-repeat="key in paragraph.keys"
+                 ng-bind-html="crc.trustAsHtml(paragraph[key])"></div>
+        </div>
+    </div>
+    <div ng-if="crc.lineChart">
+        <a id="c1" href="#" class="mamam" data-text="模型图"></a>
+        <font class="part-title">模型图</font>
+        <div class="part">
+            <chart chart-data="crc.lineChart"></chart>
+        </div>
+    </div>
+</div>
+

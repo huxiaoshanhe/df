@@ -1,0 +1,270 @@
+@import "global";
+
+// 定义按钮
+
+// 左右内边距控制大小
+$button-tny-side: rem-calc(15); // 小号 2字 间4 64px  高 28px
+$button-sml-side: rem-calc(19); // 正常 2字 间4 72px  高 28px
+$button-lrg-side: rem-calc(43); // 大号 4字 间2 150px 高 32px
+
+// 控制显示属性
+$button-display: inline-block;
+$button-line-height: rem-calc(26);
+$button-letter-spacing: rem-calc(4);
+$button-min-letter-spacing: rem-calc(2);
+
+// 控制按钮文本样式
+$button-font-size: rem-calc(14); // 正常
+$button-font-family: $body-font-family;
+$button-font-weight: $font-weight-normal;
+$button-font-align: center;
+$button-font-color: #fff;
+$button-font-color-alt: $base-font-color; // 高亮度字体颜色
+
+// 控制悬浮透明度
+$button-function-factor: -20%;
+$button-function-hover-opacity: .9;
+$button-function-active-opacity: .8;
+
+// 控制按钮边框样式
+$button-border-width: 1px;
+$button-border-style: solid;
+
+// 控制默认圆角
+$button-radius: 2px;
+
+// 默认禁用样式控制
+$button-disabled-opacity: .8;
+$button-disabled-color-opacity: .5;
+$button-disabled-cursor: default;
+
+// 颜色控制
+$button-bg-color: #419cf9;
+$button-border-color: #0e5daa;
+// 确认
+$button-confirm-bg: #2c92fa;
+$button-confirm-border-color: #419CF6;
+// 取消
+$button-cancel-bg: #f0f0f0;
+$button-cancel-color: #505152;
+$button-cancel-border-color: #a3a4a5;
+$button-cancel-bg-hover: rgba($button-cancel-bg, .6);
+// 禁用颜色控制
+$button-disabled-bg-color: #409bf5;
+$button-disabled-border-color: #2F69A1;
+
+// 创建一个基础按钮的样式
+// $style - 是否添加样式
+// $display - 控制显示方式. Default: $button-display || inline-block
+@mixin button-base ($style:true, $display:$button-display) {
+  @if $style {
+    position: relative;
+    margin: 0;
+    line-height: normal;
+    border-width: $button-border-width;
+    border-style: $button-border-style;
+    font-family: $button-font-family;
+    font-weight: $button-font-weight;
+    text-decoration: none;
+    text-align: $button-font-align;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius:0;
+    outline: 0;
+  }
+  @if $display { display: $display; }
+}
+
+// 控制按钮尺寸的混入
+// $side-width - 左右内边距的值
+// $letter-spacing - 文字间隔
+// $line-height - 用行高控制高度
+// $full-width - 是否宽度占满容器
+@mixin button-size (
+  $side-width:$button-sml,
+  $letter-spacing:$button-letter-spacing,
+  $line-height:$button-line-height,
+  $full-width:false) {
+
+  // 内边距控制宽度,行高控制高度
+  padding-top: 0;
+  padding-left: $side-width;
+  padding-bottom: 0;
+  padding-right: $side-width - $letter-spacing; // 字体间隔
+
+  font-size: $button-font-size;
+  letter-spacing: $letter-spacing;
+  line-height: $line-height;
+
+  // 创建一个占满父宽度的按钮
+  @if $full-width {
+    padding-right: 0;
+    padding-left: 0;
+    width: 100%; 
+  }
+}
+
+// 用来创建各种状态的按钮(null会默认添加, false会为背景)
+@mixin button-style (
+  $bg: $button-bg-color,
+  $color: $button-font-color,
+  $border-color: $button-border-color,
+  $bg-hover: null,
+  $color-active: null,
+  $disabled: false,
+  $radius: false) {
+
+  @if $bg {
+
+    // 默认hover下.9背景透明度
+    @if $bg-hover == null {
+      $bg-hover: adjust-color($bg, $alpha: ($button-function-hover-opacity - 1));
+    }
+
+    // 默认active下.8的字体透明度
+    @if $color-active == null {
+      $color-active: adjust-color($color, $alpha: ($button-function-active-opacity - 1));
+    }
+
+    // 得到亮度
+    $bg-lightness: lightness($bg);
+    $bg-hover-lightness: lightness($bg-hover);
+
+    color: $color;
+    background: $bg;
+    border-color: $border-color;
+
+    &:hover,
+    &.hover {
+      background: $bg-hover;
+    }
+
+    &:active,
+    &.active {
+      color: $color-active;
+    }
+  }
+
+  // 禁用样式覆盖
+  @if $disabled {
+    box-shadow: none;
+    cursor: $button-disabled-cursor;
+    opacity: $button-disabled-opacity;
+    &:hover, &.hover, &:active, &.active {
+      color: $color;
+      background-color: $bg;
+      border-color: $border-color;
+    }
+  }
+
+  // 控制圆角
+  @if $radius == true { @include radius($button-radius); }
+  @else if $radius { @include radius($radius); }
+}
+
+@include exports ("bottons") {
+
+  button, .button {
+    @include button-base;
+
+    @include single-transition(background-color);
+
+    // 尺寸
+    &.min {
+      @include button-size($side-width:10px,$letter-spacing:0,$line-height:22px);
+      font-size: 12px;
+    }
+    &.short { @include button-size($side-width: $button-tny-side,$line-height: 20px); }
+    &.tiny { @include button-size($side-width: $button-tny-side); }
+    &.small { @include button-size($side-width: $button-sml-side); }
+    &.large { 
+      background:#2c78d0;
+      border:none;
+      padding:5px 10px 5px 5px;
+      border-radius:5px;
+      margin-top:8px;
+      margin-left:15px;
+      cursor:cursor;
+      color:#fff;
+      font-size:14px;
+      i {
+          display:inline-block;
+          width:13px;
+          height:13px;
+          background:url('../assets/images/icon-collections.png') 0 -80px;
+          position:relative;
+          top:2px;
+          left:4px;
+        }
+    };
+    &.expand { @include button-size(
+      $side-width: $button-min-letter-spacing,
+      $line-height: 30px,
+      $full-width: true);
+
+      .icon {
+        vertical-align: middle;
+        margin: -2px 3px 0 0;
+      }
+    }
+
+
+
+
+    // 功能
+    &.primary {}
+    &.confirm {
+      @include button-style(
+        $radius: 3px,
+        $bg: $button-confirm-bg,
+        $border-color: $button-confirm-border-color);
+    }
+    // 清除
+    &.cancel {
+      @include button-style(
+        $bg: $button-cancel-bg,
+        $color: $button-cancel-color,
+        $bg-hover: $button-cancel-bg-hover,
+        $border-color: $button-cancel-border-color);
+    }
+    &.lit {
+      text-align: center;
+      @include button-style(
+        $bg: #efefef,
+        $color: rgba(0, 0, 0, .9),
+        $bg-hover: #efefef,
+        $border-color: #cecfcf,
+        $radius: true);
+    }
+
+    // 禁用
+    &.disabled, &[disabled="true"] {
+      &.primary {   
+        background:none;     
+        cursor:default;
+        color:#7eaeef;
+        font-size:16px;
+        i {          
+          background:url('../assets/images/icon-collections.png') 0 -95px;          
+        }
+      }
+
+      &.confirm {
+        @include button-style(
+          $disabled: true,
+          $color: rgba($button-font-color, .5),
+          $bg: $button-confirm-bg,
+          $border-color: $button-confirm-border-color);
+      }
+    }
+
+    &.disabled-f {
+      &.primary {
+        @include button-style(
+          $disabled: true,
+          $color: rgba($button-font-color, .6));
+      }
+    }
+  }
+}

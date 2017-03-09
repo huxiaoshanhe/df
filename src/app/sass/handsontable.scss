@@ -1,0 +1,21 @@
+@import "global";
+
+@include exports("hd") {
+  .handsontable .htDimmed {
+    color: #000;
+    font: 13px/1 \5fae\8f6f\96c5\9ed1, tahoma, arial,"Hiragino Sans GB", \5b8b\4f53;
+    line-height:22px;
+  }
+  .handsontable thead {font-size:13px;}
+  .handsontable tr:first-child td {text-align:right;}
+  .handsontable.hasCol tr:first-child td {text-align:left;}
+  .handsontable.hasCol tr:nth-child(2) td {text-align:right;}
+  .htContextMenu table.htCore tr:first-child td {text-align:left;}
+
+  .htDimmed i.icon-info {
+    margin-bottom: -4px;
+    opacity: .3;
+
+    &:hover, &.hover { opacity: 1; }
+  }
+}

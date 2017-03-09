@@ -1,0 +1,62 @@
+<div class="analysis-dialog">
+	<div class="dialog-inner">
+		<div class="dialog-header">
+		自相关分析
+		  <span class="icon-bar">
+		    <i class="icon remove" ng-click="close()"></i>
+		  </span>
+		</div>
+
+		<div class="dialog-content returnback autocorre" style="padding-bottom:0;">
+		  <table style="width: 100%;">
+			  <tbody>
+			      <tr class="attention">
+			        <th class="tableLeft">选变量：</th>
+			        <td style="padding:0;">
+			          <div class="ybl">
+			          	<div class="nowYbl" ng-click="showList('.ybl',event)">{{selectRecord.variableIndexname}}<em class="ico-down"></em></div>
+			          	<ul>
+			          		<li ng-repeat="vindex in data.indeptVars" ng-click="selectIndept(vindex.index,vindex.name)">{{vindex.name}}</li>
+			          	</ul>
+			          </div>
+			        </td>
+			      </tr>	
+			      <tr>
+			      	<td colspan="2">
+			      		<div class="puts-sort">
+			      			<div class="puts">
+			      				<span class="bt">输入</span>
+			      				<p><label class="checkbox" ng-class="{'on':selectRecord.output.indexOf('ac')!==-1}" ng-click="onCheckOutput('ac')">自相关</label></p>
+			      				<p><label class="checkbox" ng-class="{'on':selectRecord.output.indexOf('pac')!==-1}"ng-click="onCheckOutput('pac')">偏自相关</label></p>
+			      			</div>
+			      			<div class="sort">
+			      				<span class="bt">序列处理</span>
+			      				<p><label class="checkbox" ng-class="{'on':selectRecord.logTrans}" ng-click="selectRecord.logTrans = !selectRecord.logTrans">自然对数转换</label></p>
+			      				<p><label class="checkbox" ng-class="{'on':selectRecord.hasdiff==1}" ng-click="selectRecord.hasdiff = (selectRecord.hasdiff==1?0:1)">差分</label><input type="text" ng-model="selectRecord.diff" ng-disabled="selectRecord.hasdiff!==1" /></p>
+			      				<p><label class="checkbox" ng-class="{'on':selectRecord.hasseasonal==1}" ng-click="selectRecord.hasseasonal = (selectRecord.hasseasonal==1?0:1)">季节性差分</label><input type="text" ng-model="selectRecord.seasonal" ng-disabled="selectRecord.hasseasonal!==1" /></p>
+			      			</div>
+			      			<div class="clear"></div>
+			      		</div>
+			      		<div class="zhjs">
+			      			最大滞后阶数<input type="text" ng-model="selectRecord.maxlag" readonly="readonly" ng-click="showList('.zhjs')" />
+				          	<ul>
+				          		<li ng-click="selectMaxlag(5)">5</li>
+				          		<li ng-click="selectMaxlag(10)">10</li>
+				          		<li ng-click="selectMaxlag(20)">20</li>
+				          		<li ng-click="selectMaxlag(30)">30</li>
+				          	</ul>
+			      		</div>
+			      	</td>
+			      </tr>      
+			    </tbody>
+		    </table>
+		</div>
+
+		<div class="dialog-bottom">
+		  <button class="tiny cancel" ng-click="close();">取消</button>
+		  <button class="small confirm"
+		    ng-class="{'disabled':startButton() == 0}"
+		    ng-click="autocorreGo()">确定</button>
+		</div>
+	</div>
+</div>

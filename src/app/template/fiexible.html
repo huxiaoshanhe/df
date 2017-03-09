@@ -1,0 +1,30 @@
+<div class="fiexible">
+	<dl>
+		<dt>基本信息</dt>
+		<dd>
+			<p>频度：<span ng-show="icvm.infomation.freqId==1">年</span><span ng-show="icvm.infomation.freqId==3">季</span><span ng-show="icvm.infomation.freqId==4">月</span></p>
+ 			<p>区域：
+	 			<span ng-show="icvm.infomation.regclc==0">全球数据</span>
+	 			<span ng-show="icvm.infomation.regclc==1">全国数据</span>
+	 			<span ng-show="icvm.infomation.regclc==2">省级数据</span>
+	 			<span ng-show="icvm.infomation.regclc==3">市级数据</span>
+	 			<span ng-show="icvm.infomation.regclc==4">县级数据</span>
+ 			</p>
+			<p>全称：{{icvm.infomation.fullName}}</p>
+		</dd>
+	</dl>
+	<dl>
+		<dt>数据时间</dt>
+		<dd>
+			<p>开始时间：{{icvm.startDate}}</p>
+			<p>结束时间：{{icvm.endDate}}</p>	
+		</dd>
+	</dl>
+	<dl>
+		<dt>数据来源</dt>
+		<dd>
+			<p ng-show="icvm.infomation.sourceOrg!=null">来源：{{icvm.infomation.sourceOrg}}</p>
+			<p ng-show="icvm.infomation.sourceZh!=null">出版物：{{icvm.infomation.sourceZh}}</p>		
+		</dd>
+	</dl>
+</div>

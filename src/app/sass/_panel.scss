@@ -1,0 +1,95 @@
+@import "global";
+// 弹出层面板
+
+// 列表盒子模型
+$panel-list-padding: 5px 0 5px 0;
+$panel-list-radius-size: 2px;
+$panel-list-box-shadow: 2px 2px 3px rgba(0, 0, 0, .2);
+
+// 列表文字块
+$list-font-block-display: block;
+$list-font-block-position: relative;
+$list-font-block-padding: 0 0 0 18px;
+$list-font-block-font-size: 12px;
+$list-font-block-cursor: pointer;
+
+// 列表颜色块
+$list-color-container-padding: 9px;
+$list-color-block-display: inline-block;
+$list-color-block-width: 12px;
+$list-color-block-height: 12px;
+$list-color-block-gap: 5px;
+$list-color-block-cursor: pointer;
+
+// 面板颜色定义
+$panel-list-bg-color: #ffffff;
+$panel-list-border-color: #d3d7d9;
+$panel-mask-bg-color: gray;
+$list-custom-btn-bg-color: #f0f0f0;
+$list-color-blank-border-color: #e8e8e8;
+$list-font-block-hover-bg-color: #f0f0f0;
+
+@include exports ("panel") {
+
+  .panel {
+    position: absolute;
+    display: block;
+
+    &.mask {
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 999;
+      background-color: $panel-mask-bg-color;
+    }
+
+    &.list {
+      padding: $panel-list-padding;
+      border: 1px solid $panel-list-border-color;
+      border-radius: $panel-list-radius-size;
+      box-shadow: $panel-list-box-shadow;
+      background-color: $panel-list-bg-color;
+
+      .font-block { // 面板下菜单文字块
+        display: $list-font-block-display;
+        position: $list-font-block-position;
+        padding: $list-font-block-padding;
+        font-size: $list-font-block-font-size;
+        line-height: $list-font-block-font-size * 2; // ?
+        cursor: $list-font-block-cursor;
+
+        &:hover { background-color: $list-font-block-hover-bg-color; }
+        // &.selected { @include icon-abs-before("selected", (4px, 0)); }
+      }
+
+      &.color-container { padding: $list-color-container-padding; }
+
+      .color-block { // 颜色块定义
+        display: $list-color-block-display;
+        width: $list-color-block-width;
+        height: $list-color-block-height;
+        margin-right: $list-color-block-gap;
+        cursor: $list-font-block-cursor;
+
+        // 空白或透明边框
+        &.color-border { border: 1px solid $list-color-blank-border-color; }
+        &.selected {
+          position: relative;
+          //@include icon-abs-before("selected", (1px, 2px));
+        }
+        &.selected::before { filter: brightness(1000%); } // 高光大白 
+      }
+      .color-group { // 颜色分组
+        line-height: 0;
+        margin-bottom: $list-color-block-gap;
+        > .color-block:last-child { margin-right: 0; }
+      }
+
+      .custom-btn {
+        width: 100%;
+        font-size: 12px;
+        background-color: $list-custom-btn-bg-color;
+        border-color: $list-custom-btn-bg-color;
+      }
+    }
+  }
+}

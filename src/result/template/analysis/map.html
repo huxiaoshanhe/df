@@ -1,0 +1,21 @@
+﻿
+
+<div class="result map" style="margin: 0 auto;">
+  <div class="directory"></div>
+  <div class="result-title">
+    <h1>地图</h1>
+    <span class="header-tools">
+      <i class="icon icon-r icon-r-share" title="分享"
+        ng-if="mpc.isShare"
+        ng-click="mpc.share(mpc.shareId)"></i>
+    </span>
+  </div>
+<div ng-if="mpc.mapChart">
+  <a id="t100" href="#" class="mamam" data-text="地图"></a>
+  <font class="part-title">地图</font>
+  <div class="part">
+    <mapchart chart-data="mpc.mapChart"></mapchart>
+  </div>
+</div>
+</div>
+

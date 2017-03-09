@@ -1,0 +1,15 @@
+<div class="left">
+	<dl class="member-info">
+		<dt></dt>
+		<dd ng-bind="userInfo.userName"></dd>
+	</dl>
+
+	<ul class="sideNav">
+		<li ng-show="userInfo.userType==='PERSONAL'" ui-sref-active="active" ui-sref-active="active" ui-sref=".mydatas"><a href="">个人数据集</a></li>
+		<li ui-sref-active="active" ui-sref=".keywordsHistory"><a href="">关键词搜索历史</a></li>
+		<li ui-sref-active="active" ui-sref=".controlHistory"><a href="">指标查看历史</a></li>
+		<li ui-sref-active="active" ui-sref=".updatePass"><a href="">修改密码</a></li>
+		<li ng-show="userInfo.userType==='GROUP'" ui-sref-active="active" ui-sref=".userManage"><a href="">用户管理</a></li>
+	</ul>
+</div>
+<div class="right" ui-view=""></div>
